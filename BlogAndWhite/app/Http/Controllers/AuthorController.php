@@ -42,12 +42,13 @@ class AuthorController extends Controller {
 		return \Redirect::to('/admin/manage_accounts');
 	}
 
-	//insert posts
-	//view form
+	
+	//view adding form
 	public static function blog_form(){
 		return view('author_createblog');
 	}
 
+	//insert posts
 	public static function insert_posts(Request $request){
 		$data=$request->all();
 		TblPosts::insert_posts( $data );
