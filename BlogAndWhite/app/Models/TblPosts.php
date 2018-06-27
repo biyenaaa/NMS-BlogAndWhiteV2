@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class TblPosts extends Model {
+	protected $table='posts';
 
 	protected $table='posts';
 	public $timestamps = false;
@@ -49,6 +50,19 @@ class TblPosts extends Model {
 		}
 		catch (QueryException $e) 
 		{
+			die($e);
+		}
+	}
+
+	public static function insert_posts( $params ){
+		$posts = new TblPosts;
+		dd($params);
+		$posts->title = $params['title'];
+		$posts->content = $params['content'];
+		try{	
+			$posts->save();
+		}
+		catch (QueryException $e){
 			die($e);
 		}
 	}

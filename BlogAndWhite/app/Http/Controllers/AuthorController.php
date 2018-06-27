@@ -42,6 +42,18 @@ class AuthorController extends Controller {
 		return \Redirect::to('/admin/manage_accounts');
 	}
 
+	//insert posts
+	//view form
+	public static function blog_form(){
+		return view('author_createblog');
+	}
+
+	public static function insert_posts(Request $request){
+		$data=$request->all();
+		TblPosts::insert_posts( $data );
+	}
+
+
 	// public static function disable_account(Request $request){
 	// 	$data=$request->all();
 	// 	$account_id=$data['accId'];

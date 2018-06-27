@@ -20,7 +20,10 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/manage_posts', 'PostController@manage_posts');
 Route::get('/admin/manage_accounts', 'AuthorController@manage_accounts');
 Route::get('/admin/manage_comments', 'CommentsController@index');
-Route::get('/create_blogs', 'AuthorController@index');
+
+//insert blogs
+Route::get('/blog_form', 'AuthorController@blog_form');
+Route::post('/create_blogs', 'AuthorController@insert_posts');
 
 Route::post('/admin/manage_accounts/update_account', 'AuthorController@update_account');
 Route::post('/admin/manage_posts/update_post', 'PostController@update_post');
