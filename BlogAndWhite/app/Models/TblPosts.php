@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 
 class TblPosts extends Model {
+	protected $table='posts';
 
 	public static function get_posts(){
 		$query = \DB::table('posts AS p')
@@ -33,4 +34,18 @@ class TblPosts extends Model {
 				->count();
 		return $query;
 	}
+
+	public static function insert_posts( $params ){
+		$posts = new TblPosts;
+		dd($params);
+		$posts->title = $params['title'];
+		$posts->content = $params['content'];
+		try{	
+			$posts->save();
+		}
+		catch (QueryException $e){
+			die($e);
+		}
+	}
+
 }
