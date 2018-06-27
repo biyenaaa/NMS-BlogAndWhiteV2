@@ -1,5 +1,6 @@
 <?php 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\TblPosts;
 
 class PostController extends Controller {
@@ -24,6 +25,13 @@ class PostController extends Controller {
 	public static function posts_info(){
 		$posts=TblPosts::posts_info();
 		echo(json_encode($posts));
+	}
+
+	//update
+	public static function update_post(Request $request){
+		$data=$request->all();
+		TblPosts::update_post( $data );
+		return \Redirect::to('/admin/manage_posts');
 	}
 
 }

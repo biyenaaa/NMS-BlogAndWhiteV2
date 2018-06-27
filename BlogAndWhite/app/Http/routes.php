@@ -23,6 +23,8 @@ Route::get('/admin/manage_comments', 'CommentsController@index');
 Route::get('/create_blogs', 'AuthorController@index');
 
 Route::post('/admin/manage_accounts/update_account', 'AuthorController@update_account');
+Route::post('/admin/manage_posts/update_post', 'PostController@update_post');
+Route::post('/admin/manage_comments/update_comment', 'CommentsController@update_comment');
 // Route::post('/admin/manage_accounts/disable_account', 'AuthorController@disable_account');
 /**Route::controllers([
 	'auth' => 'Auth\AuthController',11111

@@ -19,12 +19,15 @@
 					<td>{{ $post->title }}</td>
 					<td> {{ $post->username}} </td>
 					<td>{{ $post->date_published }}</td>
-						<form action="publish.php" method="get">
-							<input type="hidden" name="postId" value="{!! $post->post_id !!}">
+						<form action="{!! url('/admin/manage_posts/update_post'); !!}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="postId" value="{!! $post->id !!}">
 							@if ($post->status == '0')
-								<td> <input class="btn btn-outline-dark" type="submit" name="enable" value="publish"> </td>
+								<input type="hidden" name="status" value="1">
+								<td> <button class="btn btn-outline-dark" type="submit">publish</button> </td>
 							@else
-								<td> <input class="btn btn-outline-danger" type="submit" name="disable" value="unpublish" formaction="unpublish.php"> </td>
+								<input type="hidden" name="status" value="0">
+								<td> <button class="btn btn-outline-danger" type="submit">unpublish</button> </td>
 							@endif
 						</form>
 				</tr>
