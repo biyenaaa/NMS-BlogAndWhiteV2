@@ -1,0 +1,36 @@
+<?php $__env->startSection('title', 'Manage Comments'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="page-header text-center"><h1>Comments</h1></div>
+	<div class=" container col col-sm-8 ">
+		<table class="table table-bordered table-hover">
+			<thead>
+			    <tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">Post</th>
+			      <th scope="col">Comment</th>
+			      <th scope="col">Date</th>
+			      <th scope="col">Visible</th>
+			    </tr>
+	  		</thead>
+			<?php foreach($comments as $comment): ?>
+				<tr>
+					<td><?php echo e($comment->name); ?></td>
+					<td> <?php echo e($comment->title); ?> </td>
+					<td><?php echo e($comment->comment_content); ?></td>
+					<td><?php echo e($comment->date_commented); ?></td>
+						<form action="#" method="get">
+							<input type="hidden" name="commentId" value="<?php echo $comment->comment_id; ?>">
+							<?php if($comment->status == '0'): ?>
+								<td> <input class="btn btn-outline-dark" type="submit" name="show" value="show"> </td>
+							<?php else: ?>
+								<td> <input class="btn btn-outline-danger" type="submit" name="hide" value="hide" formaction="#"> </td>
+							<?php endif; ?>
+						</form>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

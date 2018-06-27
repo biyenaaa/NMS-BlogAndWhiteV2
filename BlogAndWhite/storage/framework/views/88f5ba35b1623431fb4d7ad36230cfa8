@@ -1,0 +1,27 @@
+<?php $__env->startSection('title', 'Manage Accounts'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="page-header text-center"><h1>Blogs</h1></div>
+	<div class=" container col col-sm-8 ">
+		<table class="table table-bordered table-hover">
+			<thead>
+			    <tr>
+			      <th scope="col">Title</th>
+			      <th scope="col">Author</th>
+			      <th scope="col">Date Published</th>
+			      <th scope="col">Post</th>
+			    </tr>
+	  		</thead>
+			<?php foreach($posts as $post): ?>
+				<tr>
+					<td><?php echo e($post->title); ?></td>
+					<td> <?php echo e($post->username); ?> </td>
+					<td><?php echo e($post->date_published); ?></td>
+					<td> <?php echo e($post->status); ?> (button) </td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

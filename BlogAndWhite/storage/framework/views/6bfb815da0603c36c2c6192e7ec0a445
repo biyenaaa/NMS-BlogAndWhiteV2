@@ -1,0 +1,9 @@
+<?php $__env->startSection('title', 'Home'); ?>
+
+<?php $__env->startSection('content'); ?>
+<h1>land</h1>
+	<?php foreach($posts as $post): ?>
+	<?php echo e($post->title); ?> <br>
+	<?php endforeach; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
