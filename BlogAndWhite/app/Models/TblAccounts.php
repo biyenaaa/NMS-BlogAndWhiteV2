@@ -32,12 +32,12 @@ class TblAccounts extends Model {
 	public static function update_account( $params ){
 		$account = TblAccounts::find($params['accId']);
 
-		// if(isset($params['status']))
+		if(isset($params['status']))
 			$account->status = $params['status'];
 
 		try {
 			$account->save();
-			die('successfully updated account');
+			//die('successfully updated account');
 		}
 		catch (QueryException $e) 
 		{

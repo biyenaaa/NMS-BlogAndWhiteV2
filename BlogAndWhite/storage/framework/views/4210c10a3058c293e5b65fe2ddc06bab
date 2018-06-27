@@ -1,0 +1,47 @@
+<?php $__env->startSection('title', 'Manage Accounts'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<div style="margin-top: 10%;" class="wrapper container col col-sm-10 card-group">
+  <div class="card">
+    <div class="card-body">
+      <center><h5 class="card-title"><a href='<?php echo url('/admin/manage_posts');; ?>'>Blogs</a></h5></center>
+      <p class="card-text">
+      	Published blogs: <?php echo e($published_posts); ?>
+
+      </p>
+      <p class="card-text">
+      	Unpublished blogs: <?php echo e($unpublished_posts); ?>
+
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <center><h5 class="card-title"><a href='<?php echo url('/admin/manage_accounts');; ?>'>Author Accounts</a></h5></center>
+      <p class="card-text">
+      	Enabled accounts: <?php echo e($enabled_accounts); ?>
+
+      </p>
+      <p class="card-text">
+      	Disabled Accounts: <?php echo e($disabled_accounts); ?>
+
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <center><h5 class="card-title"><a href='<?php echo url('/admin/manage_comments');; ?>'>Comments</a></h5></center>
+      <p class="card-text">
+      	Displayed Comments: <?php echo e($displayed_comments); ?>
+
+      </p>
+      <p class="card-text">
+      	Hidden Comments: <?php echo e($hidden_comments); ?>
+
+      </p>
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

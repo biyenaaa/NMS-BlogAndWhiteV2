@@ -21,11 +21,11 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="accId" value="{!! $account->id !!}">
 							@if ($account->status == '0')
-								<input class="btn btn-outline-dark" type="hidden" name="status" value="1">
+								<input type="hidden" name="status" value="1">
 								<td> <button class="btn btn-outline-dark" type="submit">enable</button> </td>
 							@else
-								<input class="btn btn-outline-danger" type="hidden" name="status" value="0">
-								<td> <button class="btn btn-outline-dark" type="submit">disable</button> </td>
+								<input type="hidden" name="status" value="0">
+								<td> <button class="btn btn-outline-danger" type="submit">disable</button> </td>
 							@endif
 						</form>
 				</tr>
