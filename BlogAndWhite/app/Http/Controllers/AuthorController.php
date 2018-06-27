@@ -39,6 +39,7 @@ class AuthorController extends Controller {
 		$data=$request->all();
 		// $account_id=$data['accId'];
 		TblAccounts::update_account( $data );
+		return \Redirect::to('/admin/manage_accounts');
 	}
 
 	//insert posts

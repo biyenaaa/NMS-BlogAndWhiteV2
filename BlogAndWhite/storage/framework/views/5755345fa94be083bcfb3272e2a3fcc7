@@ -1,0 +1,35 @@
+<?php $__env->startSection('title', 'Manage Accounts'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="page-header text-center"><h1>Accounts</h1></div>
+	<div class=" container col col-sm-8 ">
+		<table class="table table-bordered table-hover">
+			<thead>
+		    	<tr>
+			      <th scope="col">Username</th>
+			      <th scope="col">Date Joined</th>
+			      <th scope="col">Account</th>
+			    </tr>
+  			</thead>
+			<?php foreach($accounts as $account): ?>
+				<tr>
+					<td><?php echo e($account->username); ?></td>
+					<td> <?php echo e($account->date_registered); ?> </td>
+						<form action="<?php echo url('/admin/manage_accounts/update_account');; ?>" method="post">
+							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+							<input type="hidden" name="accId" value="<?php echo $account->id; ?>">
+							<?php if($account->status == '0'): ?>
+								<input type="hidden" name="status" value="1">
+								<td> <button class="btn btn-outline-dark" type="submit">enable</button> </td>
+							<?php else: ?>
+								<input type="hidden" name="status" value="0">
+								<td> <button class="btn btn-outline-danger" type="submit">disable</button> </td>
+							<?php endif; ?>
+						</form>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
