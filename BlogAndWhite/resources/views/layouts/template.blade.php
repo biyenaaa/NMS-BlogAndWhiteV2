@@ -31,10 +31,10 @@
                <!-- Navigation for Author accounts -->
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="{!! url('/create_blogs'); !!}"> My Blogs <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"> Write a Blog <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only">(current)</span></a>
                   </li>
                 </ul>
 
@@ -61,12 +61,12 @@
                 </span>
                 <a href="{!! url('/login'); !!}">
                 <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Sign in</span> 
+                  <span class="glyphicon glyphicon-log-out">Sign In</span> 
                 </button>
                 </a>
-                <a href="{!! url('/logout'); !!}">
+                <a href="{!! url('/register'); !!}">
                 <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Log out</span> 
+                  <span class="glyphicon glyphicon-log-out">Sign Up</span> 
                 </button>
                 </a>
             @endif
