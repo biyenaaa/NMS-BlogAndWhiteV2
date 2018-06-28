@@ -8,7 +8,7 @@
 		<div class="panel-body">
 			<br><br><br>
 			<center><h2>Blog & White</h2></center>
-			<form class="form-login" action="{!! url('\login\doLogin');}" method="POST">
+			<form class="form-login" action="{!! url('doLogin'); !!}" method="POST">
 				<center>
 				<table>
 					<tr>
