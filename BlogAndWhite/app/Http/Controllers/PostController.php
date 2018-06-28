@@ -37,7 +37,7 @@ class PostController extends Controller {
 	}
 
 	public static function show($id){
-		$post = TblPosts::posts_info2([ 'id' => $id ])
+		$post = TblPosts::posts_info([ 'id' => $id ])
 				->first();
 		//dd($post->select('*')->first()->toArray());
 		return view('posts_show')->with('post', $post);
