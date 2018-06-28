@@ -12,14 +12,14 @@ class PostController extends Controller {
 		return view('home', $data);
 	}
 
-	public function manage_posts()->get(){
+	public function manage_posts(){
 		$data=[];
-		$data['posts']=TblPosts::posts_info();
+		$data['posts']=TblPosts::posts_info()->get();
 		return view('managePosts', $data);
 	}
 
 	public static function get_posts(){
-		$posts=TblPosts::post_info();
+		$posts=TblPosts::post_info()->get();
 		echo(json_encode($posts));
 	}
 
@@ -37,7 +37,7 @@ class PostController extends Controller {
 	}
 
 	public static function show($id){
-		$post = TblPosts::posts_info([ 'id' => $id ])
+		$post = TblPosts::posts_info2([ 'id' => $id ])
 				->first();
 		//dd($post->select('*')->first()->toArray());
 		return view('posts_show')->with('post', $post);

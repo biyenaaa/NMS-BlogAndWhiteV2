@@ -26,9 +26,10 @@ class TblPosts extends Model {
 		{
 			$query->where('p.id','=',$params['id']);
 		}
-				//->get();
+		return $query;
+	}		//->get();
 
-	public static function posts_info(){
+	public static function post_info(){
 		$query =\DB::table('posts AS p')
 				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
 				->select('p.id', 'p.title', 'a.username', 'p.date_published', 'p.status')
@@ -69,7 +70,7 @@ class TblPosts extends Model {
 
 	public static function update_blogs( $params ){
 
-		$post = TblPosts::find($params['postId']);;
+		$post = TblPosts::find($params['postId']);
 		if(isset($params['title']) && isset($params['content'])){
 			$post->title = $params['title'];
 			$post->content = $params['content'];
