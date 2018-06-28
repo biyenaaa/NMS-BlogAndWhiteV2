@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TblAccounts;
-use View;
+use View, Validator, Input, Auth;
 //use Illuminate\Support\Facades\View;
 
 class LoginController extends Controller{
@@ -16,7 +16,7 @@ class LoginController extends Controller{
 		
 		//create rules for the input
 		$rules = array(
-			'username' => 'required|email',
+			'username' => 'required',
 			'password' => 'required|alphaNum|min:8'
 		);
 
@@ -28,6 +28,7 @@ class LoginController extends Controller{
 			return \Redirect::to('login')
 				->withErrors($validator) //send back the errors to the form
 				->withInput(Input::except('password')); //send back input data except password
+			//echo "Fail";
 		} else {
 			$userdata = array(
 				'username' => Input::get('username'),
@@ -36,8 +37,8 @@ class LoginController extends Controller{
 
 			//login
 			if(Auth::attempt($userdata)) {
-
-				echo 'You have successfully logged in.';
+				return \Redirect::to('/');
+				//echo 'You have successfully logged in.';
 			} else {
 				return \Redirect::to('login');
 			}
@@ -46,6 +47,6 @@ class LoginController extends Controller{
 
 	public function doLogout() {
 		Auth::logout();
-		return \Redirect::to('\login');
+		return \Redirect::to('login');
 	}
 }
