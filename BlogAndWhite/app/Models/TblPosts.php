@@ -16,7 +16,7 @@ class TblPosts extends Model {
 
 	public static function posts_info(){
 		$query =\DB::table('posts AS p')
-				->leftJoin('accounts AS a', 'a.id', '=', 'p.acc_id')
+				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
 				->select('p.id', 'p.title', 'a.username', 'p.date_published', 'p.status')
 				->get();
 		return $query;
