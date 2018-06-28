@@ -1,7 +1,6 @@
-@extends('layouts.template')
-@section('title', 'Registration')
+<?php $__env->startSection('title', 'Registration'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 		<br>
 
@@ -11,8 +10,8 @@
 
 					<h4>Registration</h4>
 					
-					<form action="{!! url('/registerProcess'); !!}" method="post" name="registration">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<form action="<?php echo url('/registerProcess');; ?>" method="post" name="registration">
+						<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="username"> Username</label>
@@ -38,4 +37,5 @@
 			</div>
 		</main>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

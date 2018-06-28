@@ -1,7 +1,8 @@
 <?php namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
-use App\User as Aauthenticatable;
+use App\User as Authenticatable;
 
 class TblAccounts extends Authenticatable {
 
@@ -46,5 +47,11 @@ class TblAccounts extends Authenticatable {
 		}
 	}
 
+	public static function add_account( $params ){
+		$id = DB::table('accounts')->insert(
+			['username' => $params['username'], 'password' => bcrypt($params['password']), 'email' => $params['email'] ]
+		);
+		var_dump($id);
+	}
 
 }

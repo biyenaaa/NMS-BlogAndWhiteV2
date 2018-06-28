@@ -13,33 +13,32 @@ class RegistrationController extends Controller {
 		return View::make('register');
 	}
 
-	public function storeRegistration(Request $request) {
-		$validator = Validator::make($request->all(), ['username' => 'required',
-			'email' => 'required|email',
-			'password' => 'required|min:8'
-		]);
+	// public function storeRegistration(Request $request) {
+	// 	$validator = Validator::make($request->all(), ['username' => 'required',
+	// 		'email' => 'required|email',
+	// 		'password' => 'required|min:8'
+	// 	]);
 
-		if($validator->fails()) {
-			return redirect('/home')
-						->withErrors($validator)
-						->withInput();
-		} else {
-			echo 'Success!';
-		}
+	// 	if($validator->fails()) {
+	// 		return redirect('/home')
+	// 					->withErrors($validator)
+	// 					->withInput();
+	// 	} else {
+	// 		echo 'Success!';
+	// 	}
 
-		//$user = User::create(request(['username', 'email', 'password']);
+	// 	//$user = User::create(request(['username', 'email', 'password']);
 
-		// auth()->login($user);
+	// 	// auth()->login($user);
 
-		//return redirect()->to('/home');
-	}
+	// 	//return redirect()->to('/home');
+	// }
 
-	public static function add_accounts(Request $request) {
+	public static function add_account(Request $request) {
 		$data = $request->all();
-
-		TblAccounts::add_accounts($data);
-		//echo $data;
-
+		TblAccounts::add_account($data);
 	}
+
+
 
 }
