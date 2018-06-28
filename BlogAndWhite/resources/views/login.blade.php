@@ -19,21 +19,12 @@
 					</tr>
 
 					<tr>
-						<td><label for="psw">Password</label></td><input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<td><label for="psw">Password</label></td>
 						<input type="hidden" method="POST">
 						<td><input type="password" name="password" required><br/></td>
 					</tr>
 				</table>
 				
-					<!-- <?php
-						session_start();
-						if (isset($_SESSION['errmsg'])) {
-							echo $_SESSION['errmsg'];
-							unset($_SESSION['errmsg']);
-						}else {
-							echo "";
-						}
-					?> -->
 					<br>
 					<center><button type="submit" class="btn btn-outline-dark">Sign-in</button></center></td>
 					<br>
