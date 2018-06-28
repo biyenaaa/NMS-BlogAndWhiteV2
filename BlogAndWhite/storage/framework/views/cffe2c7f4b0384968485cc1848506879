@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<br><br><br>
 			<center><h2>Blog & White</h2></center>
-			<form class="form-login" action="{!! url('\login\doLogin');}" method="POST">
+			<form class="form-login" action="<?php echo url('doLogin');; ?>" method="POST">
 				<center>
 				<table>
 					<tr>
@@ -17,21 +17,12 @@
 					</tr>
 
 					<tr>
-						<td><label for="psw">Password</label></td><input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+						<td><label for="psw">Password</label></td>
 						<input type="hidden" method="POST">
 						<td><input type="password" name="password" required><br/></td>
 					</tr>
 				</table>
 				
-					<!-- <?php
-						session_start();
-						if (isset($_SESSION['errmsg'])) {
-							echo $_SESSION['errmsg'];
-							unset($_SESSION['errmsg']);
-						}else {
-							echo "";
-						}
-					?> -->
 					<br>
 					<center><button type="submit" class="btn btn-outline-dark">Sign-in</button></center></td>
 					<br>

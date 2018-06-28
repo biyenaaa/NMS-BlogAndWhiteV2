@@ -11,7 +11,7 @@
 
 					<h4>Registration</h4>
 					
-					<form action="{!! url('/registerProcess'); !!}" method="post" name="registration">
+					<form action="{!! url('registerProcess'); !!}" method="post" name="registration">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="col-sm-6">
 								<div class="form-group">
@@ -20,13 +20,18 @@
 								</div>
 
 								<div class="form-group">
+									<label for="email"> Email</label>
+									<input class="form-control" type="email" name="email" required>
+								</div>
+
+								<div class="form-group">
 									<label for="password"> Password</label>
 									<input class="form-control" type="password" name="password" required>
 								</div>
 
 								<div class="form-group">
-									<label for="email"> Email</label>
-									<input class="form-control" type="email" name="email" required>
+									<label for="password_confirmation"> Re-enter Password </label>
+									<input class="form-control" type="password" name="password_confirmation" required>
 								</div>
 
 								<div class="form-group">

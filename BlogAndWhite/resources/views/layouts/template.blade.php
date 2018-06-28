@@ -56,7 +56,7 @@
               logged in as user
             </span>
             <div class="divider"></div>
-            <a href="../logout.php">
+            <a href="{!! url('/logout'); !!}">
               <button type="button" class="btn btn-sm">
                   <span class="glyphicon glyphicon-log-out">Log out</span> 
               </button>

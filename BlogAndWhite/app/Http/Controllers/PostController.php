@@ -14,7 +14,7 @@ class PostController extends Controller {
 
 	public function manage_posts(){
 		$data=[];
-		$data['posts']=TblPosts::posts_info()->get();
+		$data['posts']=TblPosts::posts_get();
 		return view('managePosts', $data);
 	}
 
@@ -25,7 +25,6 @@ class PostController extends Controller {
 
 	public static function posts_info(){
 		$posts=TblPosts::get_posts();
-		
 		echo(json_encode($posts));
 	}
 

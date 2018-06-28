@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Models\TblAccounts;
 use View, Validator, Input, Auth;
 //use Illuminate\Support\Facades\View;
@@ -37,6 +38,7 @@ class LoginController extends Controller{
 
 			//login
 			if(Auth::attempt($userdata)) {
+				Session::put(['loggedIn'=>$userdata]);
 				return \Redirect::to('/');
 				//echo 'You have successfully logged in.';
 			} else {
@@ -46,7 +48,7 @@ class LoginController extends Controller{
 	}
 
 	public function doLogout() {
-		Auth::logout();
-		return \Redirect::to('login');
+		Session::flush();
+		return \Redirect::to('/');
 	}
 }
