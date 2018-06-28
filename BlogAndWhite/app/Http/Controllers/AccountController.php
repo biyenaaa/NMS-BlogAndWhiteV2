@@ -21,11 +21,5 @@ class AccountController extends Controller {
 		echo(json_encode($accounts));
 	}
 
-	public static function add_account(Request $request){
-		$data=$request->all();
-		TblAccounts::update_comment( $data );
-		//return \Redirect::to('/admin/manage_comments');
-	}
-
 
 }

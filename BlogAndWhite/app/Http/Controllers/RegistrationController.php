@@ -37,6 +37,7 @@ class RegistrationController extends Controller {
 	public static function add_account(Request $request) {
 		$data = $request->all();
 		TblAccounts::add_account($data);
+		return \Redirect::to('/');
 	}
 
 
