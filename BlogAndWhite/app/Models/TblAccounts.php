@@ -1,8 +1,9 @@
 <?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User as Aauthenticatable;
 
-class TblAccounts extends Model {
+class TblAccounts extends Authenticatable {
 
 	protected $table='accounts';
 	public $timestamps = false;
