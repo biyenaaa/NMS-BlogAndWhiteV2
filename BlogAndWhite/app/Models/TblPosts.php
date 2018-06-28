@@ -26,6 +26,7 @@ class TblPosts extends Model {
 		{
 			$query->where('p.id','=',$params['id']);
 		}
+		return $query;
 	}
 
 	public static function posts_get(){
@@ -69,7 +70,7 @@ class TblPosts extends Model {
 
 	public static function update_blogs( $params ){
 
-		$post = TblPosts::find($params['postId']);;
+		$post = TblPosts::find($params['postId']);
 		if(isset($params['title']) && isset($params['content'])){
 			$post->title = $params['title'];
 			$post->content = $params['content'];

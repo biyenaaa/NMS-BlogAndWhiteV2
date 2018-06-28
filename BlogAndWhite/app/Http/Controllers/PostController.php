@@ -7,7 +7,7 @@ class PostController extends Controller {
 	
 	public function index(){
 		$data=[];
-		$data['posts']=TblPosts::posts_info();
+		$data['posts']=TblPosts::posts_info()->get();
 		#dd($data);
 		return view('home', $data);
 	}
@@ -19,13 +19,12 @@ class PostController extends Controller {
 	}
 
 	public static function get_posts(){
-		$posts=TblPosts::post_info();
+		$posts=TblPosts::post_info()->get();
 		echo(json_encode($posts));
 	}
 
 	public static function posts_info(){
 		$posts=TblPosts::get_posts();
-		
 		echo(json_encode($posts));
 	}
 
