@@ -1,22 +1,23 @@
 <?php namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
-use App\User as Aauthenticatable;
+use App\User as Authenticatable;
 
 class TblAccounts extends Authenticatable {
 
-	protected $table='accounts';
+	protected $table='users';
 	public $timestamps = false;
 	public static function get_accounts()
 	{
-		$query = \DB::table('accounts AS a')
+		$query = \DB::table('users AS a')
 				->get();
 		return $query;
 	}
 
 	public static function get_enabled_accounts()
 	{
-		$query = \DB::table('accounts AS a')
+		$query = \DB::table('users AS a')
 				->where('status','=','1')
 				->count();
 		return $query;
@@ -24,7 +25,7 @@ class TblAccounts extends Authenticatable {
 
 	public static function get_disabled_accounts()
 	{
-		$query = \DB::table('accounts AS a')
+		$query = \DB::table('users AS a')
 				->where('status','=','0')
 				->count();
 		return $query;
@@ -46,5 +47,10 @@ class TblAccounts extends Authenticatable {
 		}
 	}
 
+	public static function add_account( $params ){
+		$id = DB::table('users')->insert(
+			['username' => $params['username'], 'password' => bcrypt($params['password']), 'email' => $params['email'] ]
+		);
+	}
 
 }
