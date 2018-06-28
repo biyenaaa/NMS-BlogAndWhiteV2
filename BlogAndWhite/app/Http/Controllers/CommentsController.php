@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\TblComments;
 
 class CommentsController extends Controller {
@@ -11,10 +12,10 @@ class CommentsController extends Controller {
 	}
 
 	//update
-	public static function update_comments(Request $request){
+	public static function update_comment(Request $request){
 		$data=$request->all();
 		// $account_id=$data['accId'];
-		TblComments::update_comments( $data );
+		TblComments::update_comment( $data );
 		return \Redirect::to('/admin/manage_comments');
 	}
 

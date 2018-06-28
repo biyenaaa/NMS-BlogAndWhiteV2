@@ -26,7 +26,7 @@
 							<input type="hidden" name="commentId" value="{!! $comment->id !!}">
 							@if ($comment->status == '0')
 								<input type="hidden" name="status" value="1">
-								<td> <button class="btn btn-outline-dark" type="submit">show</button> </td>
+								<td> <button class="btn btn-outline-dark" type="submit">display</button> </td>
 							@else
 								<input type="hidden" name="status" value="0">
 								<td> <button class="btn btn-outline-danger" type="submit">hide</button> </td>

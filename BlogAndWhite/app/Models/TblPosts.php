@@ -4,7 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblPosts extends Model {
 	protected $table='posts';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3d58a77b24a798ae2c721e5f0e22c8e94eea7da7
 	public $timestamps = false;
 
 	public static function get_posts(){
@@ -15,6 +18,7 @@ class TblPosts extends Model {
 		return $query;
 	}
 
+<<<<<<< HEAD
 	public static function posts_info( $params=null ){
 		$query = \DB::table('posts AS p')
 				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
@@ -27,6 +31,13 @@ class TblPosts extends Model {
 			$query->where('p.id','=',$params['id']);
 		}
 				//->get();
+=======
+	public static function posts_info(){
+		$query =\DB::table('posts AS p')
+				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
+				->select('p.id', 'p.title', 'a.username', 'p.date_published', 'p.status')
+				->get();
+>>>>>>> 3d58a77b24a798ae2c721e5f0e22c8e94eea7da7
 		return $query;
 	}
 
