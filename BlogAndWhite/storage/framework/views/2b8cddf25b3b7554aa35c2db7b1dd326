@@ -1,0 +1,37 @@
+<?php $__env->startSection('title', 'Manage Accounts'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="page-header text-center"><h1>Blogs</h1></div>
+	<div class=" container col col-sm-8 ">
+		<table class="table table-bordered table-hover">
+			<thead>
+			    <tr>
+			      <th scope="col">Title</th>
+			      <th scope="col">Author</th>
+			      <th scope="col">Date Published</th>
+			      <th scope="col">Post</th>
+			    </tr>
+	  		</thead>
+			<?php foreach($posts as $post): ?>
+				<tr>
+					<td><?php echo e($post->title); ?></td>
+					<td> <?php echo e($post->username); ?> </td>
+					<td><?php echo e($post->date_published); ?></td>
+						<form action="<?php echo url('/admin/manage_posts/update_post');; ?>" method="post">
+							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+							<input type="hidden" name="postId" value="<?php echo $post->id; ?>">
+							<?php if($post->status == '0'): ?>
+								<input type="hidden" name="status" value="1">
+								<td> <button class="btn btn-outline-dark" type="submit">publish</button> </td>
+							<?php else: ?>
+								<input type="hidden" name="status" value="0">
+								<td> <button class="btn btn-outline-danger" type="submit">unpublish</button> </td>
+							<?php endif; ?>
+						</form>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

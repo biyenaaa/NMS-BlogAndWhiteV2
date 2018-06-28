@@ -19,9 +19,9 @@
 			<div class="card-body d-flex flex-column align-items-start">
 				<strong class="d-inline-block mb-2 text-primary">{{ $post->username }}</strong>
 				<h3 class="mb-0">
-					<a href=post/getpost.php?post_id='.$postid.' class="text-dark">{{ $post->title }}</a>
+					<a href="/posts/{{$post->id}} " class="text-dark">{{ $post->title }}</a>
 				</h3>
-				<div class="mb-1 text-muted">{{ $post->date_published }}</div>
+				<div class="mb-1 text-muted"></div>
 				<!--<p class="card-text mb-auto">'.limitTextWords($content, 50, true, true).'</p>-->
 				<form action="#" method="GET">
 					<input type="hidden" name="post_id" value="'.$postid.'">

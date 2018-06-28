@@ -54,11 +54,16 @@ class AuthorController extends Controller {
 		TblPosts::insert_posts( $data );
 	}
 
+	//view editting form
+	public static function edit_blog_form(){
+		return view('author_editblog');
+	}
 
-	// public static function disable_account(Request $request){
-	// 	$data=$request->all();
-	// 	$account_id=$data['accId'];
-	// 	echo $account_id;
-	// }
+
+	public static function disable_account(Request $request){
+		$data=$request->all();
+		$account_id=$data['accId'];
+		echo $account_id;
+	}
 
 }

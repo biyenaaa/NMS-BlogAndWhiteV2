@@ -21,12 +21,15 @@
 					<td> {{ $comment->title}} </td>
 					<td>{{ $comment->comment_content }}</td>
 					<td>{{ $comment->date_commented }}</td>
-						<form action="#" method="get">
-							<input type="hidden" name="commentId" value="{!! $comment->comment_id !!}">
+						<form action="{!! url('/admin/manage_comments/update_comment'); !!}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="commentId" value="{!! $comment->id !!}">
 							@if ($comment->status == '0')
-								<td> <input class="btn btn-outline-dark" type="submit" name="show" value="show"> </td>
+								<input type="hidden" name="status" value="1">
+								<td> <button class="btn btn-outline-dark" type="submit">show</button> </td>
 							@else
-								<td> <input class="btn btn-outline-danger" type="submit" name="hide" value="hide" formaction="#"> </td>
+								<input type="hidden" name="status" value="0">
+								<td> <button class="btn btn-outline-danger" type="submit">hide</button> </td>
 							@endif
 						</form>
 				</tr>

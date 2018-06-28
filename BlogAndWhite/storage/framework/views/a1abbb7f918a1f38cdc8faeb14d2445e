@@ -1,0 +1,22 @@
+<?php $__env->startSection('title', 'Home'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+<div class="container wrapper">
+
+		<!-- <div style="padding-top: 20px;" class="col col-sm-10 card-group container form-group"> -->
+    	<label for="exampleFormControlTextarea1 container"><h1><?php echo e($post->title); ?></h1></label>
+    	<span class="align-middle">by: <?php echo e($post->username); ?></span>
+    	<textarea readonly class="form-control rounded-0 " id="exampleFormControlTextarea1" rows="10"><<?php echo e($post->content); ?></textarea>
+    	<span class="float-sm-right">
+    		Date Posted: <?php echo e($post->date_published); ?>
+
+    	</span>
+    	
+	<div class="divider"></div>	
+
+<br>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
