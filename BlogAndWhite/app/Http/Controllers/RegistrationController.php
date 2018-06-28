@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TblAccounts;
 use Illuminate\Http\Request;
 use App\User;
-use View, Validator;
+use View, Validator, Input, Auth;
 
 class RegistrationController extends Controller {
 
@@ -13,31 +13,29 @@ class RegistrationController extends Controller {
 		return View::make('register');
 	}
 
-	// public function storeRegistration(Request $request) {
-	// 	$validator = Validator::make($request->all(), ['username' => 'required',
-	// 		'email' => 'required|email',
-	// 		'password' => 'required|min:8'
-	// 	]);
-
-	// 	if($validator->fails()) {
-	// 		return redirect('/home')
-	// 					->withErrors($validator)
-	// 					->withInput();
-	// 	} else {
-	// 		echo 'Success!';
-	// 	}
-
-	// 	//$user = User::create(request(['username', 'email', 'password']);
-
-	// 	// auth()->login($user);
-
-	// 	//return redirect()->to('/home');
-	// }
-
 	public static function add_account(Request $request) {
-		$data = $request->all();
-		TblAccounts::add_account($data);
-		return \Redirect::to('/');
+		$rules = array(
+			'username' => 'required',
+	 		'email' => 'required|email',
+	 		'password' => 'required|min:8||confirmed'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()) {
+			return \Redirect::to('/register')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			//echo 'Success!';
+			//$user = User::create($request -> all(), ['username', 'email', 'password']);
+
+			//auth()->login($user);
+
+			$data = $request->all();
+			TblAccounts::add_account($data);
+			return \Redirect::to('/');
+		}		
 	}
 
 
