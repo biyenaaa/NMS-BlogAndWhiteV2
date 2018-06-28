@@ -28,6 +28,14 @@ Route::post('/create_blogs', 'AuthorController@insert_posts');
 Route::post('/admin/manage_accounts/update_account', 'AuthorController@update_account');
 Route::post('/admin/manage_posts/update_post', 'PostController@update_post');
 Route::post('/admin/manage_comments/update_comment', 'CommentsController@update_comment');
+
+//route to show the login form
+Route::get('/login', 'LoginController@showLogin');
+//route to process the form
+Route::post('/login', 'LoginController@doLogin');
+//route to logout
+Route::get('/logout', 'LoginController@doLogout');
+
 // Route::post('/admin/manage_accounts/disable_account', 'AuthorController@disable_account');
 /**Route::controllers([
 	'auth' => 'Auth\AuthController',11111
