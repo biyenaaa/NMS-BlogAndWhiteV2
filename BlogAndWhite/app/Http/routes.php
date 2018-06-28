@@ -36,6 +36,11 @@ Route::post('/login', 'LoginController@doLogin');
 //route to logout
 Route::get('/logout', 'LoginController@doLogout');
 
+//route to registration
+Route::get('/register', 'RegistrationController@createRegistration');
+Route::post('/register', 'RegistrationController@storeRegistration');
+Route::post('/registerProcess', 'RegistrationController@add_accounts');
+
 // Route::post('/admin/manage_accounts/disable_account', 'AuthorController@disable_account');
 /**Route::controllers([
 	'auth' => 'Auth\AuthController',11111
