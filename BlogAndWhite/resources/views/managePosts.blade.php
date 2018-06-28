@@ -1,8 +1,11 @@
+
 @extends('layouts.template')
 @section('title', 'Manage Posts')
 
 @section('content')
+	<?php
 
+	?>
 	<div class="page-header text-center"><h1>Blogs</h1></div>
 	<div class=" container col col-sm-8 ">
 		<table class="table table-bordered table-hover">

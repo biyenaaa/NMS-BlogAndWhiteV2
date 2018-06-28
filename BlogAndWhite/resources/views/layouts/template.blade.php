@@ -1,3 +1,8 @@
+<?php 
+  $session=Session::get('loggedIn');
+  $username = $session['username'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +27,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             
+            @if(isset($username))
+              {{$username}}
+            @endif
+
             <!-- Navigation for Author accounts -->
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
@@ -53,7 +62,7 @@
 
 
             <span class="navbar-text">
-              logged in as user
+               {{$username}}
             </span>
             <div class="divider"></div>
             <a href="{!! url('/logout'); !!}">

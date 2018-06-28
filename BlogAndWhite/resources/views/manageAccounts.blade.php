@@ -15,8 +15,7 @@
 			    </tr>
   			</thead>
   			
-  			<!-- var_dump(Session::get('loggedIn')); -->
-
+  			
 			@foreach ($accounts as $account)
 				<tr>
 					<td>{{ $account->username }}</td>

@@ -13,8 +13,7 @@
 			    </tr>
   			</thead>
   			
-  			<!-- var_dump(Session::get('loggedIn')); -->
-
+  			
 			<?php foreach($accounts as $account): ?>
 				<tr>
 					<td><?php echo e($account->username); ?></td>
