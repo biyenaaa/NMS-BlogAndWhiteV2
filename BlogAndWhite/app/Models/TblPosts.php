@@ -4,8 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblPosts extends Model {
 	protected $table='posts';
-
-	protected $table='posts';
 	public $timestamps = false;
 
 	public static function get_posts(){

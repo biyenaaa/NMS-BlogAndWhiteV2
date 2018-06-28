@@ -4,9 +4,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TblComments extends Model {
 
+	protected $table='comments';
+	public $timestamps = false;
+
 	public static function get_comments(){
 		$query = \DB::table('comments AS c')
 				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
+				->select('c.id', 'c.name', 'p.title', 'c.status', 'c.date_commented', 'c.comment_content')
 				->get();
 		return $query;
 	}
@@ -26,14 +30,13 @@ class TblComments extends Model {
 	}
 
 	public static function update_comment( $params ){
-		$comments = TblPosts::find($params['commentId']);
+		$comment = TblComments::find($params['commentId']);
 
 		if(isset($params['status']))
-			$comments->status = $params['status'];
+			$comment->status = $params['status'];
 
 		try {
-			$comments->save();
-			//die('successfully updated account');
+			$comment->save();
 		}
 		catch (QueryException $e) 
 		{

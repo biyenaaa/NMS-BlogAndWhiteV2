@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Manage Accounts'); ?>
+<?php $__env->startSection('title', 'Manage Posts'); ?>
 
 <?php $__env->startSection('content'); ?>
 

@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Manage Accounts')
+@section('title', 'Manage Posts')
 
 @section('content')
 
