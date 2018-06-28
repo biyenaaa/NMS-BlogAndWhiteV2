@@ -15,8 +15,18 @@
     	</span>
     	
 	<div class="divider"></div>	
-
 <br>
+
+<div class="divider"></div>
+		<h6>Leave a comment:</h6>
+		<form class="comment" action="<?php echo url('/comment');; ?>" method="POST">
+			<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+			<div><input type="text" name="name" placeholder="Name" required></div><br>
+			<div><textarea rows="5" cols="60" name="comment_content" placeholder="Comment" required></textarea></div>
+			<input type="hidden" name="token" value="<?php echo e(csrf_token()); ?>">
+			<button type="submit" class="btn btn-outline-dark">Comment</button>
+		</form>
+</div>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

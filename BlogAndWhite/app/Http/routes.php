@@ -8,11 +8,13 @@ Route::get('/about', 'WelcomeController@test');
 //index homepage
 Route::get('/', 'PostController@index');
 Route::resource('posts', 'PostController');
+//comments
+Route::post('/comment', 'CommentsController@add_comment');
 
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/manage_posts', 'PostController@manage_posts');
-Route::get('/admin/manage_accounts', 'AuthorController@manage_accounts');
+Route::get('/admin/manage_accounts', 'CommentsController@manage_accounts');
 Route::get('/admin/manage_comments', 'CommentsController@index');
 
 //insert blogs

@@ -16,7 +16,17 @@
     	</span>
     	
 	<div class="divider"></div>	
-
 <br>
+
+<div class="divider"></div>
+		<h6>Leave a comment:</h6>
+		<form class="comment" action="{!! url('/comment'); !!}" method="POST">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div><input type="text" name="name" placeholder="Name" required></div><br>
+			<div><textarea rows="5" cols="60" name="comment_content" placeholder="Comment" required></textarea></div>
+			<input type="hidden" name="token" value="{{ csrf_token() }}">
+			<button type="submit" class="btn btn-outline-dark">Comment</button>
+		</form>
+</div>
 
 @stop

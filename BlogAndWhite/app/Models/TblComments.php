@@ -43,4 +43,21 @@ class TblComments extends Model {
 			die($e);
 		}
 	}
+
+	public static function insert_comments( $params ){
+		$comments = new TblComments;
+		#dd($params);
+		$posts->name = $params['name'];
+		$posts->comment_content = $params['comment_content'];
+		$timestamps = true;
+		$posts->date_commented = $params['date_commented'];
+		try{	
+			$posts->save();
+		}
+		catch (QueryException $e){
+			die($e);
+		}
+	}
+
+
 }

@@ -6,8 +6,11 @@
 
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
 	<div class="col-md-12 px-0 headerblog">
+		<center
 		<h1 class="display-4 font-italic">Blog&White</h1>
 		<p class="lead my-3">Share. Relive. Experience.</p>
+		</center>
+
 	</div>
 </div>
 
@@ -23,16 +26,9 @@
 				</h3>
 				<div class="mb-1 text-muted"></div>
 				<!--<p class="card-text mb-auto">'.limitTextWords($content, 50, true, true).'</p>-->
-				<form action="#" method="GET">
-					<input type="hidden" name="post_id" value="'.$postid.'">
-					<button type="submit" class="btn btn-outline-dark">Continue Reading</a></button>
-				</form>
 			</div>
 		</div>
 	</div>
-
-
-
 		@endforeach
 	</div>
 

@@ -23,4 +23,12 @@ class CommentsController extends Controller {
 	// 	$comments=TblComments::get_comments();
 	// 	echo(json_encode($comments));
 	// }
+
+	//insert comments
+	public static function add_comment(Request $request){
+		$data=$request->all();
+		TblComments::insert_comments( $data );
+	}
+
+
 }

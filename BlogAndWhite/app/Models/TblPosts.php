@@ -86,7 +86,7 @@ class TblPosts extends Model {
 	}
 
 
-	/**public static function insert_posts( $params ){
+	public static function insert_posts( $params ){
 		$posts = new TblPosts;
 		dd($params);
 		$posts->title = $params['title'];
@@ -99,5 +99,5 @@ class TblPosts extends Model {
 		catch (QueryException $e){
 			die($e);
 		}
-	}**/
+	}
 }
