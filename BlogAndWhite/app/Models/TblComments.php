@@ -16,12 +16,12 @@ class TblComments extends Model {
 		return $query;
 	}
 
-	// public static function get_displayed_comments(){
-	// 	$query = \DB::table('comments AS c')
-	// 			->where('status','=','1')
-	// 			->count();
-	// 	return $query;
-	// }
+	public static function get_displayed_comments(){
+		$query = \DB::table('comments AS c')
+				->where('status','=','1')
+				->count();
+		return $query;
+	}
 
 	// public static function get_hidden_comments(){
 	// 	$query = \DB::table('comments AS c')

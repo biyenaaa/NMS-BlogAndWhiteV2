@@ -36,10 +36,6 @@
       	Displayed Comments: <?php echo e($displayed_comments); ?>
 
       </p>
-      <p class="card-text">
-      	Hidden Comments: <?php echo e($hidden_comments); ?>
-
-      </p>
     </div>
   </div>
 </div>

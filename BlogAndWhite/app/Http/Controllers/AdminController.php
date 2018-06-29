@@ -12,7 +12,6 @@ class AdminController extends Controller {
 		$data['enabled_accounts']=TblAccounts::get_enabled_accounts();
 		$data['disabled_accounts']=TblAccounts::get_disabled_accounts();
 		$data['displayed_comments']=TblComments::get_displayed_comments();
-		$data['hidden_comments']=TblComments::get_hidden_comments();
 		return view('adminHome', $data);
 	}
 
