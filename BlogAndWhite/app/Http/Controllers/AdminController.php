@@ -3,8 +3,10 @@ namespace App\Http\Controllers;
 use App\Models\TblPosts;
 use App\Models\TblAccounts;
 use App\Models\TblComments;
+use Auth;
+use App\Http\Controllers\SessionController;
 
-class AdminController extends Controller {
+class AdminController extends SessionController {
 	public static function index(){
 		$data=[];
 		$data['published_posts']=TblPosts::get_published_posts();
