@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Models\TblAccounts;
 use View, Validator, Input, Auth;
-//use Illuminate\Support\Facades\View;
+//use Illuminate\Support\MessageBag;
 
 class LoginController extends Controller{
 
@@ -16,6 +16,8 @@ class LoginController extends Controller{
 
 	public function doLogin() {
 		
+		//$errors = new MessageBag;
+
 		//create rules for the input
 		$rules = array(
 			'username' => 'required',
@@ -27,8 +29,12 @@ class LoginController extends Controller{
 
 		//if the validator fails, redirect back to the form
 		if($validator->fails()){
+			// set flash into session "error message"
+			//\Request::session()->flash('error_message', 'Username or Password is invalid.');
+			Session::flash('error_message', 'Username or Password is invalid.');
+
 			return \Redirect::to('login')
-				->withErrors($validator) //send back the errors to the form
+				->withErrors($validator->errors()) //send back the errors to the form
 				->withInput(Input::except('password')); //send back input data except password
 			//echo "Fail";
 		} else {
@@ -44,6 +50,7 @@ class LoginController extends Controller{
 				return \Redirect::to('/');
 				//echo 'You have successfully logged in.';
 			} else {
+				Session::flash('error_message', 'Username or Password is invalid.');
 				return \Redirect::to('login');
 			}
 		}
