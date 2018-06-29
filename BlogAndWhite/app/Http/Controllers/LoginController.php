@@ -47,7 +47,14 @@ class LoginController extends Controller{
 			//login
 			if(Auth::attempt($userdata)) {
 				Session::put(['loggedIn'=>$userdata]);
-				return \Redirect::to('/');
+				if(TblAccounts::get_account_type(Session::get('loggedIn'))=='1'){
+					Session::put(['isAdmin'=>true]);
+					return \Redirect::to('/admin');
+				}
+				else{
+					Session::put(['isAdmin'=>false]);
+					return \Redirect::to('/');
+				}
 				//echo 'You have successfully logged in.';
 			} else {
 				Session::flash('error_message', 'Username or Password is invalid.');
