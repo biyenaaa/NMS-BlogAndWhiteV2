@@ -28,24 +28,57 @@
           <div class="collapse navbar-collapse" id="navbarText">
             
             @if(isset($username))
-               <!-- Navigation for Author accounts -->
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only">(current)</span></a>
-                  </li>
-                </ul>
+               
+               @if(Session::has('isAdmin'))
+                  <!-- Navigation for Author accounts -->
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{!! url('/admin/manage_posts'); !!}"> Blogs <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{!! url('/admin/manage_accounts'); !!}"> Authors <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{!! url('/admin/manage_comments'); !!}"> Comments <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"> My Blogs <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only"></span></a>
+                    </li>
+                  </ul>
 
-                <span class="navbar-text">
-               {{$username}}
-                </span>
-                <a href="{!! url('/logout'); !!}">
-                <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Log out</span> 
-                </button>
-                </a>
+                  <span class="navbar-text">
+                    {{$username}}
+                  </span>
+                  <a href="{!! url('/logout'); !!}">
+                  <button type="button" class="btn btn-sm">
+                    <span class="glyphicon glyphicon-log-out">Log out</span> 
+                  </button>
+                  </a>
+
+                @else
+                  <!-- Navigation for Admin -->
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only">(current)</span></a>
+                    </li>
+                  </ul>
+
+                  <span class="navbar-text">
+                    {{$username}}
+                  </span>
+                  <a href="{!! url('/logout'); !!}">
+                  <button type="button" class="btn btn-sm">
+                    <span class="glyphicon glyphicon-log-out">Log out</span> 
+                  </button>
+                  </a>
+                  
+              @endif
 
             @else
 

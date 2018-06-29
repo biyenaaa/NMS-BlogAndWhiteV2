@@ -18,6 +18,10 @@ class AdminController extends SessionController {
 	        	Session::flush();
 	        	return \Redirect::to('/');
 			}
+			else{
+				Session::put(['isAdmin'=>true]);
+				var_dump(Session::get('isAdmin'));
+			}
 		}
 		
 		//return \Redirect::to('/login');
