@@ -16,7 +16,6 @@ class TblComments extends Model {
 		return $query;
 	}
 
-<<<<<<< HEAD
 	public static function posts_info( $params=null ){
 		$query = \DB::table('comments AS c')
 				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
@@ -37,14 +36,12 @@ class TblComments extends Model {
 	// 			->count();
 	// 	return $query;
 	// }
-=======
 	public static function get_displayed_comments(){
 		$query = \DB::table('comments AS c')
 				->where('status','=','1')
 				->count();
 		return $query;
 	}
->>>>>>> a499b6f54faec4b125b491fef25d6133111d4331
 
 	// public static function get_hidden_comments(){
 	// 	$query = \DB::table('comments AS c')
