@@ -16,6 +16,20 @@ class TblComments extends Model {
 		return $query;
 	}
 
+	public static function get_post_comments( $params=null ){
+		$query = \DB::table('comments AS c')
+				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
+				->select('c.id', 'c.name', 'p.title', 'c.status', 'c.date_commented', 'c.comment_content')
+				->where('c.status','=','1');
+
+		if( isset( $params['post_id'] ) )
+		{
+			$query->where('p.id','=',$params['post_id']);
+		}
+		return $query;
+	}
+
+
 	public static function posts_info( $params=null ){
 		$query = \DB::table('comments AS c')
 				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
