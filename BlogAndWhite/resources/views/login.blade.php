@@ -24,7 +24,7 @@
 						<td><input type="password" name="password" required><br/></td>
 					</tr>
 				</table>
-				
+					{{ Session::get('error_message') }}
 					<br>
 					<center><button type="submit" class="btn btn-outline-dark">Sign-in</button></center></td>
 					<br>
