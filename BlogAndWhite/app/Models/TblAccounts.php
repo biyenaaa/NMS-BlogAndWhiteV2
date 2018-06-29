@@ -63,4 +63,10 @@ class TblAccounts extends Authenticatable {
 		);
 	}
 
+	public static function username_checker($username) {
+		$query = \DB::table('users AS a')
+				->where('username','=', $username)
+				->get();
+		return $query;
+	}
 }
