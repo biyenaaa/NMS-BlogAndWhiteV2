@@ -24,12 +24,9 @@
 						<form action="{!! url('/admin/manage_comments/update_comment'); !!}" method="post">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="commentId" value="{!! $comment->id !!}">
-							@if ($comment->status == '0')
-								<input type="hidden" name="status" value="1">
-								<td> <button class="btn btn-outline-dark" type="submit">display</button> </td>
-							@else
+							@if ($comment->status == '1')
 								<input type="hidden" name="status" value="0">
-								<td> <button class="btn btn-outline-danger" type="submit">hide</button> </td>
+								<td> <button class="btn btn-outline-danger" type="submit">delete</button> </td>
 							@endif
 						</form>
 				</tr>
