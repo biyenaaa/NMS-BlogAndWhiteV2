@@ -28,19 +28,55 @@
           <div class="collapse navbar-collapse" id="navbarText">
             
             <?php if(isset($username)): ?>
-              <?php echo e($username); ?>
+               <!-- Navigation for Author accounts -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<?php echo url('/blog_form');; ?>"> Write a Blog <span class="sr-only">(current)</span></a>
+                  </li>
+                </ul>
 
+                <span class="navbar-text">
+               <?php echo e($username); ?>
+
+                </span>
+                <a href="<?php echo url('/logout');; ?>">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Log out</span> 
+                </button>
+                </a>
+
+            <?php else: ?>
+
+              <!-- Navigation for visitor -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    Welcome
+                  </li>
+                </ul>
+
+                <span class="navbar-text">
+               <?php echo e($username); ?>
+
+                </span>
+                <a href="<?php echo url('/login');; ?>">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Sign In</span> 
+                </button>
+                </a>
+                <a href="<?php echo url('/register');; ?>">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Sign Up</span> 
+                </button>
+                </a>
             <?php endif; ?>
+          </div>
+        </nav>
+      </div>
 
-            <!-- Navigation for Author accounts -->
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo url('/create_blogs');; ?>"> My Blogs <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../author/create_blogs.php"> Write a Blog <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
+           
             
             <!-- Navigation for Admin -->
             <!-- <ul class="navbar-nav mr-auto">
@@ -62,19 +98,7 @@
             </ul> -->
 
 
-            <span class="navbar-text">
-               <?php echo e($username); ?>
-
-            </span>
-            <div class="divider"></div>
-            <a href="<?php echo url('/logout');; ?>">
-              <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Log out</span> 
-              </button>
-            </a>
-        </div>
-      </nav>
-    </div>
+            
 
 
     <div class="container">

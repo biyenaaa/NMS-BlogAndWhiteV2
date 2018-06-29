@@ -28,18 +28,53 @@
           <div class="collapse navbar-collapse" id="navbarText">
             
             @if(isset($username))
-              {{$username}}
-            @endif
+               <!-- Navigation for Author accounts -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only">(current)</span></a>
+                  </li>
+                </ul>
 
-            <!-- Navigation for Author accounts -->
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{!! url('/create_blogs'); !!}"> My Blogs <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../author/create_blogs.php"> Write a Blog <span class="sr-only">(current)</span></a>
-              </li>
-            </ul>
+                <span class="navbar-text">
+               {{$username}}
+                </span>
+                <a href="{!! url('/logout'); !!}">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Log out</span> 
+                </button>
+                </a>
+
+            @else
+
+              <!-- Navigation for visitor -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    Welcome
+                  </li>
+                </ul>
+
+                <span class="navbar-text">
+               {{$username}}
+                </span>
+                <a href="{!! url('/login'); !!}">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Sign In</span> 
+                </button>
+                </a>
+                <a href="{!! url('/register'); !!}">
+                <button type="button" class="btn btn-sm">
+                  <span class="glyphicon glyphicon-log-out">Sign Up</span> 
+                </button>
+                </a>
+            @endif
+          </div>
+        </nav>
+      </div>
+
+           
             
             <!-- Navigation for Admin -->
             <!-- <ul class="navbar-nav mr-auto">
@@ -61,18 +96,7 @@
             </ul> -->
 
 
-            <span class="navbar-text">
-               {{$username}}
-            </span>
-            <div class="divider"></div>
-            <a href="{!! url('/logout'); !!}">
-              <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Log out</span> 
-              </button>
-            </a>
-        </div>
-      </nav>
-    </div>
+            
 
 
     <div class="container">
