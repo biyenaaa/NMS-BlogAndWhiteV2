@@ -50,11 +50,14 @@ class RegistrationController extends Controller {
 				return \Redirect::to('/');
 			}
 
-			
+			$user = User::create([
+				'username' => $data['username'],
+				'email' => $data['email'],
+				'password' => $data['password']
+			]);
+
+			Auth::login($user);
 			
 		}		
 	}
-
-
-
 }
