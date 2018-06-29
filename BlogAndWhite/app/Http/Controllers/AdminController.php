@@ -13,9 +13,11 @@ class AdminController extends SessionController {
 	public function __construct()
 	{
 		$this->middleware('auth');
-		if(TblAccounts::get_account_type(Session::get('loggedIn'))!='1'){
-        	Session::flush();
-        	return \Redirect::to('/');
+		if(Session::has('loggedIn')){
+			if(TblAccounts::get_account_type(Session::get('loggedIn'))!='1'){
+	        	Session::flush();
+	        	return \Redirect::to('/');
+			}
 		}
 		
 		//return \Redirect::to('/login');
