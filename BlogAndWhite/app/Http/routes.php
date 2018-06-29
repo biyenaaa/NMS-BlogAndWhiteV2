@@ -31,6 +31,7 @@ Route::post('/admin/manage_comments/update_comment', 'CommentsController@update_
 
 //route to show the login form
 Route::get('/login', 'LoginController@showLogin');
+Route::get('/auth/login', 'LoginController@showLogin');
 //route to process the form
 Route::post('/doLogin', 'LoginController@doLogin');
 //route to logout

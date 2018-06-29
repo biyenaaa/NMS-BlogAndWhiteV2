@@ -32,9 +32,6 @@
       <p class="card-text">
       	Displayed Comments: {{$displayed_comments}}
       </p>
-      <p class="card-text">
-      	Hidden Comments: {{$hidden_comments}}
-      </p>
     </div>
   </div>
 </div>

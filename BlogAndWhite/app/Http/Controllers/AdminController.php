@@ -3,8 +3,10 @@ namespace App\Http\Controllers;
 use App\Models\TblPosts;
 use App\Models\TblAccounts;
 use App\Models\TblComments;
+use Auth;
+use App\Http\Controllers\SessionController;
 
-class AdminController extends Controller {
+class AdminController extends SessionController {
 	public static function index(){
 		$data=[];
 		$data['published_posts']=TblPosts::get_published_posts();
@@ -12,7 +14,6 @@ class AdminController extends Controller {
 		$data['enabled_accounts']=TblAccounts::get_enabled_accounts();
 		$data['disabled_accounts']=TblAccounts::get_disabled_accounts();
 		$data['displayed_comments']=TblComments::get_displayed_comments();
-		$data['hidden_comments']=TblComments::get_hidden_comments();
 		return view('adminHome', $data);
 	}
 

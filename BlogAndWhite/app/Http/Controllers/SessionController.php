@@ -1,15 +1,17 @@
 <?php
 namespace App\Http\Controllers;
-use Session;
+use Session, Auth;
 
 class SessionController extends Controller {
-	public static function check_session(){
-		$session=Session::get('loggedIn');
-		if(!(Session::has('loggedIn'))){
+	public function __construct()
+	{
+		$this->middleware('auth');
+
+		if(Auth::check() && session()->has('loggedIn'))
+		{
 			return \Redirect::to('/');
-		}else{
-			$username = $session['username'];
-			return $username;
-		}
+		} 
+		
+		return \Redirect::to('/login');
 	}
 }
