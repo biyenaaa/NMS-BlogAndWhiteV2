@@ -14,11 +14,11 @@ class AuthorController extends SessionController {
 		return view('author_createblog', $data);
 	}
 
-	public function manage_posts(){
-		$data=[];
-		$data['posts']=TblPosts::posts_info();
-		return view('managePosts', $data);
-	}
+	// public function manage_posts(){
+	// 	$data=[];
+	// 	$data['posts']=TblPosts::posts_info();
+	// 	return view('managePosts', $data);
+	// }
 
 	public static function get_posts(){
 		$posts=TblPosts::get_posts();
@@ -30,11 +30,11 @@ class AuthorController extends SessionController {
 		echo(json_encode($posts));
 	}
 
-	public static function manage_accounts(){
-		$data=[];
-		$data['accounts']=TblAccounts::get_accounts();
-		return view('manageAccounts', $data);
-	}
+	// public static function manage_accounts(){
+	// 	$data=[];
+	// 	$data['accounts']=TblAccounts::get_accounts();
+	// 	return view('manageAccounts', $data);
+	// }
 
 	//update
 	public static function update_account(Request $request){

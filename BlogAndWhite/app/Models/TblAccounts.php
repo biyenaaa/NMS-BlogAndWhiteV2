@@ -47,6 +47,16 @@ class TblAccounts extends Authenticatable {
 		}
 	}
 
+	public static function get_account_type( $params ){
+		$query = \DB::table('users AS a')
+			   ->select('a.acc_type')
+			   ->where('username','=',$params['username'])
+			   ->first();
+
+		// $type =  $query['acc_type'];
+		return $query->acc_type;
+	}
+
 	public static function add_account( $params ){
 		$id = DB::table('users')->insert(
 			['username' => $params['username'], 'password' => bcrypt($params['password']), 'email' => $params['email'] ]

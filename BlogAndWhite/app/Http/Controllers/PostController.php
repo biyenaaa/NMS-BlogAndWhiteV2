@@ -7,11 +7,11 @@ use App\Http\Controllers\SessionController;
 
 class PostController extends SessionController {
 
-	public function manage_posts(){
-		$data=[];
-		$data['posts']=TblPosts::posts_get();
-		return view('managePosts', $data);
-	}
+	// public function manage_posts(){
+	// 	$data=[];
+	// 	$data['posts']=TblPosts::posts_get();
+	// 	return view('managePosts', $data);
+	// }
 
 	public static function get_posts(){
 		$posts=TblPosts::post_info()->get();

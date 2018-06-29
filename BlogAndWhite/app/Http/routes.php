@@ -13,9 +13,9 @@ Route::post('/comment', 'PublicController@add_comment');
 
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/admin/manage_posts', 'PostController@manage_posts');
-Route::get('/admin/manage_accounts', 'AuthorController@manage_accounts');
-Route::get('/admin/manage_comments', 'CommentsController@index');
+Route::get('/admin/manage_posts', 'AdminController@manage_posts');
+Route::get('/admin/manage_accounts', 'AdminController@manage_accounts');
+Route::get('/admin/manage_comments', 'AdminController@comments');
 
 //insert blogs
 Route::get('/blog_form', 'AuthorController@blog_form');
@@ -43,5 +43,6 @@ Route::get('/register', 'RegistrationController@createRegistration');
 Route::post('/registerProcess', 'RegistrationController@add_account');
 
 Route::get('/check_session', 'SessionController@check_session');
+Route::get('/check', 'AdminController@check');
 
 // Route::post('/admin/manage_accounts/disable_account', 'AuthorController@disable_account');

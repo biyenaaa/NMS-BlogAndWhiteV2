@@ -5,11 +5,11 @@ use App\Models\TblComments;
 
 class CommentsController extends Controller {
 
-	public static function index(){
-		$data=[];
-		$data['comments']=TblComments::get_comments();
-		return view('manageComments', $data);
-	}
+	// public static function index(){
+	// 	$data=[];
+	// 	$data['comments']=TblComments::get_comments();
+	// 	return view('manageComments', $data);
+	// }
 
 	//update
 	public static function update_comment(Request $request){
