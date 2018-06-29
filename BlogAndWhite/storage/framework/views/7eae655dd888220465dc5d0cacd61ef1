@@ -27,7 +27,7 @@
 		    			<h5 class="card-title"><?php echo e($comment->username); ?></h5>
 		    			<p class="card-text"><?php echo e($comment->comment_content); ?></p>
 	  				</div>
-	  			<h6 class="card-subtitle mb-2 text-muted text-right"><?php echo e($comment->datecommented); ?></h6>
+	  			<h6 class="card-subtitle mb-2 text-muted text-right"><?php echo e($comment->date_commented); ?></h6>
 				</div>
 				<br>
 		<?php endforeach; ?>

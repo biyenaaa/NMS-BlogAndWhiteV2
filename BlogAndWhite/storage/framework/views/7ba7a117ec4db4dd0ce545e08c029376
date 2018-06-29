@@ -1,0 +1,24 @@
+<?php $__env->startSection('title', 'My Blogs'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="container-fluid">
+		<div class="accordion" id="accordionExample">
+			<?php foreach($posts as $post): ?>
+				<div class="container">
+					<h4><?php echo e($post->title); ?> </h4>
+					<p><?php echo e($post->date_published); ?> </p>
+					<button type="button" href="#" class="btn btn-info" data-toggle="collapse" data-target="#demo">View</button>
+					<div id="demo" class="collapse">
+						<?php echo e($post->content); ?>
+
+					</div>
+				</div>
+			<?php endforeach; ?>
+
+		</div>
+	</div>
+	
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

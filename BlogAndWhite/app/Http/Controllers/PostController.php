@@ -2,16 +2,17 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TblPosts;
-use Auth;
+use Auth, Session;
 use App\Http\Controllers\SessionController;
 
 class PostController extends SessionController {
 
-	// public function manage_posts(){
-	// 	$data=[];
-	// 	$data['posts']=TblPosts::posts_get();
-	// 	return view('managePosts', $data);
-	// }
+	public static function get_author_posts(){
+		$session = Session::get('loggedIn');
+		$data=[];
+		$data['posts']=TblPosts::author_posts($session);
+		return view('author_blogs', $data);
+	}
 
 	public static function get_posts(){
 		$posts=TblPosts::post_info()->get();

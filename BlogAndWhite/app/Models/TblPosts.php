@@ -38,6 +38,17 @@ class TblPosts extends Model {
 		return $query;
 	}
 
+	public static function author_posts( $params ){
+		$query =\DB::table('posts AS p')
+				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
+				->select('p.id', 'p.title', 'p.content', 'a.username', 'p.date_published', 'p.status')
+				->where('a.username','=', $params['username'])
+				->where('p.status','=','1')
+				->get();
+		return $query;
+	}
+
+
 	public static function get_published_posts(){
 		$query = \DB::table('posts AS p')
 				->where('status','=','1')

@@ -20,7 +20,6 @@ class AdminController extends SessionController {
 			}
 			else{
 				Session::put(['isAdmin'=>true]);
-				var_dump(Session::get('isAdmin'));
 			}
 		}
 		

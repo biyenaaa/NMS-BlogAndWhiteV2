@@ -21,6 +21,8 @@ Route::get('/admin/manage_comments', 'AdminController@comments');
 Route::get('/blog_form', 'AuthorController@blog_form');
 Route::post('/create_blogs', 'AuthorController@insert_posts');
 
+//show author blogs
+Route::get('/author/my_blogs', 'PostController@get_author_posts');
 //edit blogs
 Route::get('/editblog', 'AuthorController@edit_blog_form');
 

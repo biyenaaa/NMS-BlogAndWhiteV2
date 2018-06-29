@@ -33,13 +33,13 @@
                   <!-- Navigation for Author accounts -->
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="{!! url('/admin/manage_posts'); !!}"> Blogs <span class="sr-only">(current)</span></a>
+                      <a class="nav-link active" href="{!! url('/admin/manage_posts'); !!}"> Blogs <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{!! url('/admin/manage_accounts'); !!}"> Authors <span class="sr-only">(current)</span></a>
+                      <a class="nav-link active" href="{!! url('/admin/manage_accounts'); !!}"> Authors <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{!! url('/admin/manage_comments'); !!}"> Comments <span class="sr-only">(current)</span></a>
+                      <a class="nav-link active" href="{!! url('/admin/manage_comments'); !!}"> Comments <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#"> My Blogs <span class="sr-only"></span></a>
