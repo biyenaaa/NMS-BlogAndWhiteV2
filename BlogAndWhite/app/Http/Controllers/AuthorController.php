@@ -3,8 +3,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TblPosts;
 use App\Models\TblAccounts;
+use Auth;
+use App\Http\Controllers\SessionController;
 
-class AuthorController extends Controller {
+class AuthorController extends SessionController {
 	
 	public function index(){
 		$data=[];

@@ -2,15 +2,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TblPosts;
+use Auth;
+use App\Http\Controllers\SessionController;
 
-class PostController extends Controller {
-	
-	public function index(){
-		$data=[];
-		$data['posts']=TblPosts::posts_info()->get();
-		#dd($data);
-		return view('home', $data);
-	}
+class PostController extends SessionController {
 
 	public function manage_posts(){
 		$data=[];
@@ -34,14 +29,5 @@ class PostController extends Controller {
 		TblPosts::update_post( $data );
 		return \Redirect::to('/admin/manage_posts');
 	}
-
-	public static function show($id){
-		$post = TblPosts::posts_info([ 'id' => $id ])
-				->first();
-		//dd($post->select('*')->first()->toArray());
-		return view('posts_show')->with('post', $post);
-	}
-
-
 
 }

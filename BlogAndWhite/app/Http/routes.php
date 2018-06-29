@@ -6,10 +6,10 @@ Route::get('/accounts', 'AccountController@index');
 Route::get('home', 'HomeController@index');
 Route::get('/about', 'WelcomeController@test');
 //index homepage
-Route::get('/', 'PostController@index');
-Route::resource('posts', 'PostController');
+Route::get('/', 'PublicController@index');
+Route::resource('posts', 'PublicController');
 //comments
-Route::post('/comment', 'CommentsController@add_comment');
+Route::post('/comment', 'PublicController@add_comment');
 
 
 Route::get('/admin', 'AdminController@index');
