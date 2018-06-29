@@ -14,7 +14,7 @@ class CommentsController extends Controller {
 	//update
 	public static function update_comment(Request $request){
 		$data=$request->all();
-		// $account_id=$data['accId'];
+		// $account_id=$data['
 		TblComments::update_comment( $data );
 		return \Redirect::to('/admin/manage_comments');
 	}
@@ -24,11 +24,15 @@ class CommentsController extends Controller {
 	// 	echo(json_encode($comments));
 	// }
 
+	//show comments
+
+
 	//insert comments
 	public static function add_comment(Request $request){
 		$data=$request->all();
 		TblComments::insert_comments( $data );
 	}
+
 
 
 }

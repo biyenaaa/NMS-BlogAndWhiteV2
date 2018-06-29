@@ -16,6 +16,20 @@ class TblComments extends Model {
 		return $query;
 	}
 
+	public static function posts_info( $params=null ){
+		$query = \DB::table('comments AS c')
+				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
+				->select('c.id', 'c.name', 'p.title', 'c.status', 'c.date_commented', 'c.comment_content')
+				->where('c.status','=','1')
+				->where('c.status','=','1');
+
+		if( isset( $params['post_id'] ) )
+		{
+			$query->where('p.id','=',$params['id']);
+		}
+		return $query;
+	}
+
 	// public static function get_displayed_comments(){
 	// 	$query = \DB::table('comments AS c')
 	// 			->where('status','=','1')
@@ -46,11 +60,12 @@ class TblComments extends Model {
 
 	public static function insert_comments( $params ){
 		$comments = new TblComments;
-		#dd($params);
+		#dd($params['post_id']);
+		$comments->post_id = $params['post_id'];
+		
 		$comments->name = $params['name'];
 		$comments->comment_content = $params['comment_content'];
-		#$timestamps = true;
-		#$comments->date_commented = $params[$timestamps];
+		
 		try{	
 			$comments->save();
 		}
