@@ -8,6 +8,7 @@ Route::get('/about', 'WelcomeController@test');
 //index homepage
 Route::get('/', 'PublicController@index');
 Route::resource('posts', 'PublicController');
+Route::get('posts/{id}', 'PublicController@get_comments');
 //comments
 Route::post('/comment', 'PublicController@add_comment');
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TblAccounts;
 use Illuminate\Http\Request;
 use App\User;
-use View, Validator, Input, Auth;
+use View, Validator, Input, Auth, Session;
 
 class RegistrationController extends Controller {
 
@@ -17,12 +17,14 @@ class RegistrationController extends Controller {
 		$rules = array(
 			'username' => 'required',
 	 		'email' => 'required|email',
-	 		'password' => 'required|min:8||confirmed'
+	 		'password' => 'required|min:8|confirmed'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails()) {
+			Session::flash('errormsg', 'Password does not match.');
+
 			return \Redirect::to('/register')
 						->withErrors($validator)
 						->withInput();
@@ -33,8 +35,23 @@ class RegistrationController extends Controller {
 			//auth()->login($user);
 
 			$data = $request->all();
-			TblAccounts::add_account($data);
-			return \Redirect::to('/');
+			$user = Tblaccounts::username_checker($data['username']);
+
+			if(!empty($user)) {
+				Session::flash('errmsg', 'Username is taken.');
+				return \Redirect::to('register');
+			} 
+			// if(!confirmed(['password'])){
+			// 	Session::flash('errormsg', 'Password does not match.');
+			// 	return \Redirect::to('register');
+			// } 
+			else{
+				TblAccounts::add_account($data);
+				return \Redirect::to('/');
+			}
+
+			
+			
 		}		
 	}
 

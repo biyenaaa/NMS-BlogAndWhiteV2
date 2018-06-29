@@ -13,15 +13,21 @@ class PublicController extends Controller {
 		#dd($data);
 		return view('home', $data);
 	}
-	public static function show($id){
-		$post = TblPosts::posts_info([ 'id' => $id ])
-				->first();
-		//dd($post->select('*')->first()->toArray());
-		return view('posts_show')->with('post', $post);
-	}
 
 	public static function add_comment(Request $request){
 		$data=$request->all();
 		TblComments::insert_comments( $data );
+	}
+
+	public static function show($id){
+		$post = TblPosts::posts_info([ 'id' => $id ])
+				->first();
+
+		$comments=TblComments::get_post_comments($post->id)->get();
+		$data['post'] = $post;
+		$data['comments'] = $comments;
+		#dd($data);
+		return view('posts_show', $data);
+		#return view('posts_show')->with('post', $data);
 	}
 }
