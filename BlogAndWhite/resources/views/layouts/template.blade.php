@@ -42,7 +42,7 @@
                       <a class="nav-link active" href="{!! url('/admin/manage_comments'); !!}"> Comments <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> My Blogs <span class="sr-only"></span></a>
+                      <a class="nav-link" href="{!! url('/author/my_blogs'); !!}"> My Blogs <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only"></span></a>
@@ -62,7 +62,7 @@
                   <!-- Navigation for Admin -->
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> My Blogs <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="{!! url('/author/my_blogs'); !!}"> My Blogs <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only">(current)</span></a>
