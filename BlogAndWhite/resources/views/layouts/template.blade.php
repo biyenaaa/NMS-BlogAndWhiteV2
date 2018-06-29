@@ -29,9 +29,12 @@
             
             @if(isset($username))
                
-               @if(Session::has('isAdmin'))
+               @if(Session::get('isAdmin'))
                   <!-- Navigation for Author accounts -->
                   <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="{!! url('/admin'); !!}"> Home <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link active" href="{!! url('/admin/manage_posts'); !!}"> Blogs <span class="sr-only">(current)</span></a>
                     </li>
