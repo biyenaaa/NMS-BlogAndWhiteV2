@@ -2,62 +2,59 @@
 
 namespace App\Http\Controllers;
 
-
-use Session;
 use App\Models\TblAccounts;
-use View, Validator, Input, Auth;
-//use Illuminate\Support\MessageBag;
+use Illuminate\Http\Request;
+use App\User;
+use View, Validator, Input, Auth, Session;
 
-class LoginController extends Controller{
+class RegistrationController extends Controller {
 
-	public function showLogin() {
-		return View::make('login');
+	public function createRegistration() {
+		return View::make('register');
 	}
 
-	public function doLogin() {
-		
-		//$errors = new MessageBag;
-
-		//create rules for the input
+	public static function add_account(Request $request) {
 		$rules = array(
 			'username' => 'required',
-			'password' => 'required|alphaNum|min:8'
+	 		'email' => 'required|email',
+	 		'password' => 'required|min:8|confirmed'
 		);
 
-		//run the validation rulles on the inputs from the form
 		$validator = Validator::make(Input::all(), $rules);
 
-		//if the validator fails, redirect back to the form
-		if($validator->fails()){
-			// set flash into session "error message"
-			//\Request::session()->flash('error_message', 'Username or Password is invalid.');
-			Session::flash('error_message', 'Username or Password is invalid.');
+		if($validator->fails()) {
+			Session::flash('errormsg', 'Password does not match.');
 
-			return \Redirect::to('login')
-				->withErrors($validator->errors()) //send back the errors to the form
-				->withInput(Input::except('password')); //send back input data except password
-			//echo "Fail";
+			return \Redirect::to('/register')
+						->withErrors($validator)
+						->withInput();
 		} else {
-			$userdata = array(
-				'username' => Input::get('username'),
-				'password' => Input::get('password'),
-				'status' => 1
-			);
+			//echo 'Success!';
+			//$user = User::create($request -> all(), ['username', 'email', 'password']);
 
-			//login
-			if(Auth::attempt($userdata)) {
-				Session::put(['loggedIn'=>$userdata]);
+			//auth()->login($user);
+
+			$data = $request->all();
+			$user = Tblaccounts::username_checker($data['username']);
+
+			if(!empty($user)) {
+				Session::flash('errmsg', 'Username is taken.');
+				return \Redirect::to('register');
+			} 
+			// if(!confirmed(['password'])){
+			// 	Session::flash('errormsg', 'Password does not match.');
+			// 	return \Redirect::to('register');
+			// } 
+			else{
+				TblAccounts::add_account($data);
 				return \Redirect::to('/');
-				//echo 'You have successfully logged in.';
-			} else {
-				Session::flash('error_message', 'Username or Password is invalid.');
-				return \Redirect::to('login');
 			}
-		}
+
+			
+			
+		}		
 	}
 
-	public function doLogout() {
-		Session::flush();
-		return \Redirect::to('/');
-	}
+
+
 }
