@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TblPosts;
+use Auth;
+use App\Http\Controllers\SessionController;
 
-class PostController extends Controller {
+class PostController extends SessionController {
 
 	public function manage_posts(){
 		$data=[];

@@ -27,12 +27,5 @@ class CommentsController extends Controller {
 	//show comments
 
 
-	//insert comments
-	public static function add_comment(Request $request){
-		$data=$request->all();
-		TblComments::insert_comments( $data );
-	}
-
-
 
 }

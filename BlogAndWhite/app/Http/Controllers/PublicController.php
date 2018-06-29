@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // use App\Models\TblComments;
 use App\Models\TblPosts;
+use App\Models\TblComments;
 
 class PublicController extends Controller {
 	public function index(){
@@ -17,5 +18,10 @@ class PublicController extends Controller {
 				->first();
 		//dd($post->select('*')->first()->toArray());
 		return view('posts_show')->with('post', $post);
+	}
+
+	public static function add_comment(Request $request){
+		$data=$request->all();
+		TblComments::insert_comments( $data );
 	}
 }

@@ -9,7 +9,7 @@ Route::get('/about', 'WelcomeController@test');
 Route::get('/', 'PublicController@index');
 Route::resource('posts', 'PublicController');
 //comments
-Route::post('/comment', 'CommentsController@add_comment');
+Route::post('/comment', 'PublicController@add_comment');
 
 
 Route::get('/admin', 'AdminController@index');
