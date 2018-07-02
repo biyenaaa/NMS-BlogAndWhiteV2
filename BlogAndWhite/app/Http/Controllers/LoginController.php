@@ -43,11 +43,14 @@ class LoginController extends Controller{
 				'password' => Input::get('password'),
 				'status' => 1
 			);
+			$store = array(
+				'username' => Input::get('username'),
+			);
 
 			//login
 			if(Auth::attempt($userdata)) {
-				Session::put(['loggedIn'=>$userdata]);
-				if(TblAccounts::get_account_type(Session::get('loggedIn'))=='1'){
+				Session::put(['loggedIn'=>$store]);
+				if(TblAccounts::get_account_type($userdata)=='1'){
 					Session::put(['isAdmin'=>true]);
 					return \Redirect::to('/admin');
 				}

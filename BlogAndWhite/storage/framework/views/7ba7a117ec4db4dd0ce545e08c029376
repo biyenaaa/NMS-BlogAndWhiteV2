@@ -19,8 +19,9 @@
 				</div>
 			<?php endforeach; ?>
 		</div>
-
 	<?php endif; ?>
+
+	<?php var_dump(Session::get('loggedIn')) ?>
 	
 <?php $__env->stopSection(); ?>
 

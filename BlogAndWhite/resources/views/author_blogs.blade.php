@@ -20,7 +20,8 @@
 				</div>
 			@endforeach
 		</div>
-
 	@endif
+
+	<?php var_dump(Session::get('loggedIn')) ?>
 	
 @stop
