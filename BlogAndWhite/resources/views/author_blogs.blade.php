@@ -5,7 +5,7 @@
 @section('content')
 	@if (count($posts)==0)
 		<div style="margin-top: 10%;" class="container"><center> You have no blogs yet </center></div>
-		<center><a class="nav-link" href="{!! url('/blog_form'); !!}"> Create My First Blog <span class="sr-only"></span></a></center>
+		<center><a class="nav-link" href="{!! url('/blog_form'); !!}"> Write a Blog <span class="sr-only"></span></a></center>
 	@else
 		<div class="container-fluid">
 			<div class="accordion" id="accordionExample">
