@@ -23,7 +23,7 @@ class RegistrationController extends Controller {
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails()) {
-			Session::flash('errormsg', 'Password does not match.');
+			Session::flash('errormsg', 'Password does not match or must be at least 8 characters.');
 
 			return \Redirect::to('/register')
 						->withErrors($validator)
