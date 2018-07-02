@@ -54,6 +54,8 @@ class AuthorController extends SessionController {
 	public static function insert_posts(Request $request){
 		$data=$request->all();
 		TblPosts::insert_posts( $data );
+
+		return \Redirect::to('/author/my_blogs');
 	}
 
 	//view editting form
