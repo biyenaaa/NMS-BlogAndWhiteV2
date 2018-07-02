@@ -111,4 +111,12 @@ class TblPosts extends Model {
 			die($e);
 		}
 	}
+
+	public static function insert_posts( $params ){
+		$acc_id = Auth::user()->id;
+
+		$id = \DB::table('posts')->insert(
+			['acc_id' => $acc_id, 'title' => $params['title'], 'content' => $params['content'] ]
+		);
+	}
 }
