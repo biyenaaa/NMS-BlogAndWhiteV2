@@ -27,6 +27,8 @@ Route::get('/author/my_blogs', 'PostController@get_author_posts');
 //edit blogs
 Route::get('/editblog/{id}', 'AuthorController@edit_blog_form');
 Route::post('/edit', 'PostController@edit_post');
+//delete blogs
+Route::post('/author/deleteblog', 'AuthorController@delete_post');
 
 //admin pages
 Route::post('/admin/manage_accounts/update_account', 'AuthorController@update_account');
