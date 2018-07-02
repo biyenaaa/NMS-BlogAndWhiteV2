@@ -57,8 +57,11 @@ class AuthorController extends SessionController {
 	}
 
 	//view editting form
-	public static function edit_blog_form(){
-		return view('author_editblog');
+	public static function edit_blog_form($id){
+		$data=[];
+		$data['posts']=TblPosts::posts_info([ 'id' => $id ])
+				->first();
+		return view('author_editblog',$data);
 	}
 
 

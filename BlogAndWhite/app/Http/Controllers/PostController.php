@@ -31,4 +31,11 @@ class PostController extends SessionController {
 		return \Redirect::to('/admin/manage_posts');
 	}
 
+	public static function edit_post(Request $request){
+		$data=$request->all();
+		TblPosts::update_blog( $data );
+		echo "success.";
+		return \Redirect::to('/posts/'.$data['postId']);
+	}
+
 }

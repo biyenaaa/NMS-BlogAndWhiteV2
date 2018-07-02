@@ -16,12 +16,11 @@
 				    	{{ $post->date_published }}
 				    </p>
 				    <a href="/posts/{{$post->id}} "><button type="button"  class="btn btn-info">View</button></a>
+				    <a href="/editblog/{{$post->id}} "><button type="button"  class="btn btn-info">Edit</button></a>
 				  </div>
 				</div>
 			@endforeach
 		</div>
 	@endif
-
-	<?php var_dump(Session::get('loggedIn')) ?>
 	
 @stop

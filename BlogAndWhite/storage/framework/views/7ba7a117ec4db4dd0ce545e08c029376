@@ -15,13 +15,12 @@
 
 				    </p>
 				    <a href="/posts/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">View</button></a>
+				    <a href="/editblog/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">Edit</button></a>
 				  </div>
 				</div>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
-
-	<?php var_dump(Session::get('loggedIn')) ?>
 	
 <?php $__env->stopSection(); ?>
 

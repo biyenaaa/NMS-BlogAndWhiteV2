@@ -79,13 +79,11 @@ class TblPosts extends Model {
 		}
 	}
 
-	public static function update_blogs( $params ){
+	public static function update_blog( $params ){
 
 		$post = TblPosts::find($params['postId']);
-		if(isset($params['title']) && isset($params['content'])){
 			$post->title = $params['title'];
 			$post->content = $params['content'];
-		}
 
 		try{
 			$post->save();
