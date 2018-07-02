@@ -1,23 +1,27 @@
 <?php $__env->startSection('title', 'My Blogs'); ?>
 
 <?php $__env->startSection('content'); ?>
+	<?php if(count($posts)==0): ?>
+		<div style="margin-top: 10%;" class="container"><center> You have no blogs yet </center></div>
+		<center><a class="nav-link" href="<?php echo url('/blog_form');; ?>"> Create My First Blog <span class="sr-only"></span></a></center>
+	<?php else: ?>
+		<div class="container-fluid">
+			<div class="accordion" id="accordionExample">
+				<?php foreach($posts as $post): ?>
+					<div class="container">
+						<h4><?php echo e($post->title); ?> </h4>
+						<p><?php echo e($post->date_published); ?> </p>
+						<button type="button" href="#" class="btn btn-info" data-toggle="collapse" data-target="#demo">View</button>
+						<div id="demo" class="collapse">
+							<?php echo e($post->content); ?>
 
-	<div class="container-fluid">
-		<div class="accordion" id="accordionExample">
-			<?php foreach($posts as $post): ?>
-				<div class="container">
-					<h4><?php echo e($post->title); ?> </h4>
-					<p><?php echo e($post->date_published); ?> </p>
-					<button type="button" href="#" class="btn btn-info" data-toggle="collapse" data-target="#demo">View</button>
-					<div id="demo" class="collapse">
-						<?php echo e($post->content); ?>
-
+						</div>
 					</div>
-				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
 
+			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 	
 <?php $__env->stopSection(); ?>
 
