@@ -16,11 +16,54 @@
 				    	{{ $post->date_published }}
 				    </p>
 				    <a href="/posts/{{$post->id}} "><button type="button"  class="btn btn-info">View</button></a>
-				    <a href="/editblog/{{$post->id}} "><button type="button"  class="btn btn-info">Edit</button></a>
+				    <!-- Button to Open the Modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					  Edit
+					</button>
 				  </div>
 				</div>
+				<!-- The Modal -->
+				<div class="modal container-fluid" id="myModal">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+
+				      <!-- Modal Header -->
+				      <div class="modal-header">
+				        <h4 class="modal-title">{{ $post->title }}</h4>
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				      </div>
+
+				      <!-- Modal body -->
+				      <div class="modal-body">
+				        <form method="post" action="{!! url('/edit'); !!}" name="edit-blog-post">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="container-fluid">
+							<h4>Edit blog</h4>
+							<p>Title: </p>
+							<input type="text" size="35" name="title" value="{!! $post->title !!}">
+
+							<br><br>
+
+							<p>Blog: </p>
+							<textarea name="content" cols="60" rows="15" placeholder="Enter text here..." required >{{ $post->content }}</textarea>
+						</div>
+				      </div>
+				      <!-- Modal footer -->
+				      <div class="modal-footer">
+				        <div class="container-fluid">
+							<input type="hidden" name="postId" value="{!! $post->id !!}">
+							<input type="submit" class="btn btn-outline-dark">
+						</div>
+				      </div>
+				      </form>
+				    </div>
+				  </div>
+				</div>
+
 			@endforeach
 		</div>
 	@endif
 	
 @stop
+
+
