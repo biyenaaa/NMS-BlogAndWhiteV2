@@ -20,11 +20,12 @@ class TblComments extends Model {
 		$query = \DB::table('comments AS c')
 				->leftJoin('posts AS p', 'p.id', '=', 'c.post_id')
 				->select('c.id', 'c.name', 'p.title', 'c.status', 'c.date_commented', 'c.comment_content')
-				->where('c.status','=','1');
-
-		if( isset( $params['post_id'] ) )
-		{
-			$query->where('p.id','=',$params['post_id']);
+				->where('c.status','=','1')
+				->orderBy('date_commented','DESC');
+				
+		if( isset( $params['post_id'] ) ){
+			$query->where('p.id','=',$params['post_id'])
+					->where('c.post_id','=',$params['post_id']);				
 		}
 		return $query;
 	}
@@ -37,9 +38,9 @@ class TblComments extends Model {
 				->where('c.status','=','1')
 				->where('c.status','=','1');
 
-		if( isset( $params['post_id'] ) )
-		{
-			$query->where('p.id','=',$params['id']);
+		if( isset( $params['post_id'] ) ){
+			$query->where('p.id','=',$params['id'])
+					->where('c.post_id','=',$params['id']);
 		}
 		return $query;
 	}
