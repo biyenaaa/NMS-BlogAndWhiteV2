@@ -17,6 +17,8 @@ class PublicController extends Controller {
 	public static function add_comment(Request $request){
 		$data=$request->all();
 		TblComments::insert_comments( $data );
+		$view = '/posts/'.$data['post_id'];
+		return \Redirect::to($view);
 	}
 
 	public static function show($id){
