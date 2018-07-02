@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class TblPosts extends Model {
 	protected $table='posts';
@@ -108,5 +109,13 @@ class TblPosts extends Model {
 		catch (QueryException $e){
 			die($e);
 		}
+	}
+
+	public static function insert_posts( $params ){
+		$acc_id = Auth::user()->id;
+
+		$id = \DB::table('posts')->insert(
+			['acc_id' => $acc_id, 'title' => $params['title'], 'content' => $params['content'] ]
+		);
 	}
 }
