@@ -16,7 +16,7 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="text" name="title" required>
+                    <input size="35" type="text" name="title" required>
 
                     <br><br>
 

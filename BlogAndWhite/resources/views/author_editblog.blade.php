@@ -10,7 +10,7 @@
 			<div class="container-fluid">
 				<h4>Edit blog</h4>
 				<p>Title: </p>
-				<input type="text" name="title" value="{!! $posts->title !!}">
+				<input type="text" size="35" name="title" value="{!! $posts->title !!}">
 
 				<br><br>
 
