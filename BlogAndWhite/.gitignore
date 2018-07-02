@@ -1,3 +1,5 @@
 error_log
 /storage/framework/views
 /storage/*.key
+/storage/framework/sessions/*
+.env
