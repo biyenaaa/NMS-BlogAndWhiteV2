@@ -8,10 +8,10 @@ Route::get('/about', 'WelcomeController@test');
 //index homepage
 Route::get('/', 'PublicController@index');
 Route::resource('posts', 'PublicController');
-Route::get('posts/{id}', 'PublicController@get_comments');
 //comments
 Route::post('/comment', 'PublicController@add_comment');
-
+//displays comments
+Route::get('/posts/{id}', 'PublicController@get_comments');
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/manage_posts', 'AdminController@manage_posts');
@@ -27,6 +27,8 @@ Route::get('/author/my_blogs', 'PostController@get_author_posts');
 //edit blogs
 Route::get('/editblog/{id}', 'AuthorController@edit_blog_form');
 Route::post('/edit', 'PostController@edit_post');
+//delete blogs
+Route::post('/author/deleteblog', 'AuthorController@delete_post');
 
 //admin pages
 Route::post('/admin/manage_accounts/update_account', 'AuthorController@update_account');

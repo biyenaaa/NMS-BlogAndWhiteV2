@@ -16,10 +16,20 @@
 				    	{{ $post->date_published }}
 				    </p>
 				    <a href="/posts/{{$post->id}} "><button type="button"  class="btn btn-info">View</button></a>
+				    
 				    <!-- Button to Open the Modal -->
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					  Edit
 					</button>
+					
+						<form action="{!! url('/author/deleteblog'); !!}" method="post">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="postId" value="{!! $post->id !!}">
+							@if($post->status == '1')
+								<input type="hidden" name="status" value="">
+								<button type="submit" href="#" class="btn btn-outline-danger">Delete</button>
+							@endif
+						</form>
 				  </div>
 				</div>
 				<!-- The Modal -->

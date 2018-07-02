@@ -1,0 +1,37 @@
+<?php $__env->startSection('title', 'My Blogs'); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php if(count($posts)==0): ?>
+		<div style="margin-top: 10%;" class="container"><center> You have no blogs yet </center></div>
+		<center><a class="nav-link" href="<?php echo url('/blog_form');; ?>"> Write a Blog <span class="sr-only"></span></a></center>
+	<?php else: ?>
+		<div class="container-fluid col-md-8">
+			<?php foreach($posts as $post): ?>
+				<div class="card ">
+				  <div class="card-body">
+				    <h4 class="card-title"><?php echo e($post->title); ?></h4>
+				    <p class="card-text">
+				    	<?php echo e($post->date_published); ?>
+
+				    </p>
+				    <a href="/posts/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">View</button></a>
+				    <a href="/editblog/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">Edit</button></a>
+					
+						<form action="<?php echo url('/author/deleteblog');; ?>" method="post">
+							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+							<input type="hidden" name="postId" value="<?php echo $post->id; ?>">
+							<?php if($post->status == '1'): ?>
+								<input type="hidden" name="status" value="">
+								<button type="submit" href="#" class="btn btn-outline-danger">Delete</button>
+							<?php endif; ?>
+						</form>
+
+				  </div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+	
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

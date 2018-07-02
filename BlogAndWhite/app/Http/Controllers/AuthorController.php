@@ -73,4 +73,11 @@ class AuthorController extends SessionController {
 		echo $account_id;
 	}
 
+	//author module - delete blog form
+	public static function delete_post(Request $request){
+		$data=$request->all();
+		TblPosts::update_post( $data );
+		return \Redirect::to('/author/my_blogs');
+	}
+
 }

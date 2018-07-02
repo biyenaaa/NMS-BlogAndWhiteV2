@@ -10,7 +10,6 @@ class PublicController extends Controller {
 	public function index(){
 		$data=[];
 		$data['posts']=TblPosts::posts_info()->get();
-		#dd($data);
 		return view('home', $data);
 	}
 
@@ -25,10 +24,14 @@ class PublicController extends Controller {
 		$post = TblPosts::posts_info([ 'id' => $id ])
 				->first();
 
-		$comments=TblComments::get_post_comments($post->id)->get();
+		$comments=TblComments::get_post_comments(['post_id' =>$post->id])
+				->get();
+
+				#dd($comments);
 		$data['post'] = $post;
 		$data['comments'] = $comments;
-		#dd($data);
+
+		#dd($data['comments']);
 		return view('posts_show', $data);
 		#return view('posts_show')->with('post', $data);
 	}

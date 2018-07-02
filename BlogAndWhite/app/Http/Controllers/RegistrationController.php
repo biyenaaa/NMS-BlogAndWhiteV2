@@ -14,45 +14,49 @@ class RegistrationController extends Controller {
 	}
 
 	public static function add_account(Request $request) {
-		$rules = array(
+
+		$validator = Validator::make(Input::all(), [
 			'username' => 'required',
 	 		'email' => 'required|email',
-	 		'password' => 'required|min:8|confirmed'
-		);
+	 		//'password' => 'required|min:8|confirmed'
+		]);
 
-		$validator = Validator::make(Input::all(), $rules);
+		$validator1 = Validator::make(Input::all(), [ 
+			'password' => 'required|min:8'
+		]);
+
+		$validator2 = Validator::make(Input::all(), [
+			'password' => 'required|confirmed'
+		]);
 
 		if($validator->fails()) {
-			Session::flash('errormsg', 'Password does not match.');
 
 			return \Redirect::to('/register')
 						->withErrors($validator)
 						->withInput();
 		} else {
-			//echo 'Success!';
-			//$user = User::create($request -> all(), ['username', 'email', 'password']);
-
-			//auth()->login($user);
-
 			$data = $request->all();
 			$user = Tblaccounts::username_checker($data['username']);
 
 			if(!empty($user)) {
-				Session::flash('errmsg', 'Username is taken.');
+				Session::flash('errmsg1', 'Username is taken.');
 				return \Redirect::to('register');
-			} 
-			// if(!confirmed(['password'])){
-			// 	Session::flash('errormsg', 'Password does not match.');
-			// 	return \Redirect::to('register');
-			// } 
-			else{
+			} if($validator1->fails()) {
+				Session::flash('errmsg2', 'Password must be at least 8 characters.');
+				return \Redirect::to('register');
+			} if($validator2->fails()) {
+				Session::flash('errmsg3', 'Password does not match.');
+				return \Redirect::to('register');
+			} else{
 				TblAccounts::add_account($data);
 				return \Redirect::to('/');
 			}
 
+			 
+
 			$user = User::create([
 				'username' => $data['username'],
-				'email' => $data['email'],
+				//'email' => $data['email'],
 				'password' => $data['password']
 			]);
 

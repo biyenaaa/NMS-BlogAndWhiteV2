@@ -15,10 +15,20 @@
 
 				    </p>
 				    <a href="/posts/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">View</button></a>
+				    
 				    <!-- Button to Open the Modal -->
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 					  Edit
 					</button>
+					
+						<form action="<?php echo url('/author/deleteblog');; ?>" method="post">
+							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+							<input type="hidden" name="postId" value="<?php echo $post->id; ?>">
+							<?php if($post->status == '1'): ?>
+								<input type="hidden" name="status" value="">
+								<button type="submit" href="#" class="btn btn-outline-danger">Delete</button>
+							<?php endif; ?>
+						</form>
 				  </div>
 				</div>
 				<!-- The Modal -->
