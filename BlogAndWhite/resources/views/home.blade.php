@@ -15,21 +15,22 @@
 </div>
 
 	<div class="row mb-2">
-	
-	@foreach ($posts as $post)
-	<div class="col-md-6">
-		<div class="card flex-md-row mb-4 box-shadow h-md-250 bg-light">
-			<div class="card-body d-flex flex-column align-items-start">
-				<strong class="d-inline-block mb-2 text-primary">{{ $post->username }}</strong>
-				<h3 class="mb-0">
-					<a href="/posts/{{$post->id}} " class="text-dark">{{ $post->title }}</a>
-				</h3>
-				<div class="mb-1 text-muted"></div>
-				<!--<p class="card-text mb-auto">'.limitTextWords($content, 50, true, true).'</p>-->
+		@foreach ($posts as $post)
+		<div class="col-md-6">
+			<div class="card flex-md-row mb-4 box-shadow h-md-250 bg-light">
+				<div class="card-body d-flex flex-column align-items-start">
+					<strong class="d-inline-block mb-2 text-primary">{{ $post->username }}</strong>
+					<h3 class="mb-0">
+						<a href="/posts/{{$post->id}} " class="text-dark">{{ $post->title }}</a>
+					</h3>
+					<div class="mb-1 text-muted">{{$post->date_published}}</div>
+					<p class="card-text mb-auto">{!! str_limit($post->content, 50) !!}</p>
+				</div>
 			</div>
 		</div>
-	</div>
+
 		@endforeach
 	</div>
+  
 
 	@stop
