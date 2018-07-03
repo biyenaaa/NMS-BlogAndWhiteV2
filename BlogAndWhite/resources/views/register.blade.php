@@ -17,7 +17,6 @@
 								<div class="form-group">
 									<label for="username"> Username</label>
 									<input class="form-control" type="text" id="name" name="username" required>
-									<
 									@if(Session::has('errmsg1'))
 										{{ Session::get('errmsg1') }}
 									@endif
