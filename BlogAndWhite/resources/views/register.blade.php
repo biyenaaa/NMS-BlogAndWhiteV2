@@ -17,9 +17,11 @@
 								<div class="form-group">
 									<label for="username"> Username</label>
 									<input class="form-control" type="text" id="name" name="username" required>
+									<font color="red"> 
 									@if(Session::has('errmsg1'))
 										{{ Session::get('errmsg1') }}
 									@endif
+									</font>
 								</div>
 
 								<div class="form-group">
@@ -30,13 +32,17 @@
 								<div class="form-group">
 									<label for="password"> Password</label>
 									<input class="form-control" type="password" name="password" min="8" required>
+									<font color="red"> 
 									{{ Session::get('errmsg2') }}
+									</font>
 								</div>
 
 								<div class="form-group">
 									<label for="password_confirmation"> Re-enter Password </label>
 									<input class="form-control" type="password" name="password_confirmation" min="8" required>
+									<font color="red"> 
 									{{ Session::get('errmsg3') }}
+									</font>
 								</div>
 
 								<div class="form-group">
