@@ -1,21 +1,22 @@
 <?php $__env->startSection('title', 'Edit Blog'); ?>
 
 <?php $__env->startSection('content'); ?>
-<!--<br>
+<br>
 	<div class="col-12 col-sm-9">
-		<form method="post" name="edit-blog-post">
+		<form method="post" action="<?php echo url('/edit');; ?>" name="edit-blog-post">
+			<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 			<div class="container-fluid">
-				<!--<h4>Edit <?php echo e($post->title); ?> blog</h4>
+				<h4>Edit blog</h4>
 				<p>Title: </p>
-				<input type="text" name="title" value= required>
+				<input type="text" size="35" name="title" value="<?php echo $posts->title; ?>">
 
 				<br><br>
 
 				<p>Blog: </p>
-				<textarea name="content" cols="100" rows="15" placeholder="Enter text here..." required ><!--<?php echo e($post->content); ?></textarea>
+				<textarea name="content" cols="100" rows="15" placeholder="Enter text here..." required ><?php echo e($posts->content); ?></textarea>
 
 				<div class="container-fluid">
-					<input type="hidden" name="id" value="">
+					<input type="hidden" name="postId" value="<?php echo $posts->id; ?>">
 					<input type="submit" class="btn btn-outline-dark">
 				</div>
 
@@ -24,6 +25,6 @@
 
 		</form>
 	</div>
--->
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
