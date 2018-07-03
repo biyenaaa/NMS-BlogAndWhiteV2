@@ -14,10 +14,11 @@
 				    	<?php echo e($post->date_published); ?>
 
 				    </p>
-				    <a href="/posts/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">View</button></a>
-				    <a href="/editblog/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">Edit</button></a>
+				    
 					
 						<form action="<?php echo url('/author/deleteblog');; ?>" method="post">
+							<a href="/posts/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">View</button></a>
+				    	<a href="/editblog/<?php echo e($post->id); ?> "><button type="button"  class="btn btn-info">Edit</button></a>
 							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 							<input type="hidden" name="postId" value="<?php echo $post->id; ?>">
 							<?php if($post->status == '1'): ?>

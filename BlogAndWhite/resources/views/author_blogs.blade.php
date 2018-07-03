@@ -15,10 +15,11 @@
 				    <p class="card-text">
 				    	{{ $post->date_published }}
 				    </p>
-				    <a href="/posts/{{$post->id}} "><button type="button"  class="btn btn-info">View</button></a>
-				    <a href="/editblog/{{$post->id}} "><button type="button"  class="btn btn-info">Edit</button></a>
+				    
 					
 						<form action="{!! url('/author/deleteblog'); !!}" method="post">
+							<a href="/posts/{{$post->id}} "><button type="button"  class="btn btn-info">View</button></a>
+				    	<a href="/editblog/{{$post->id}} "><button type="button"  class="btn btn-info">Edit</button></a>
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="postId" value="{!! $post->id !!}">
 							@if($post->status == '1')
