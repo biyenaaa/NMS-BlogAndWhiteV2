@@ -21,7 +21,8 @@ class TblPosts extends Model {
 				->leftJoin('users AS a', 'a.id', '=', 'p.acc_id')
 				->select('p.id', 'p.title', 'a.username', 'p.date_published', 'p.status', 'p.content')
 				->where('p.status','=','1')
-				->where('a.status','=','1');
+				->where('a.status','=','1')
+				->orderBy('date_published','DESC');
 
 		if( isset( $params['id'] ) )
 		{

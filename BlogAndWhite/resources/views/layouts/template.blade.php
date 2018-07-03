@@ -55,11 +55,11 @@
                   </ul>
 
                   <span class="navbar-text">
-                    {{$username}}
+                    {{$username}} 
                   </span>
                   <a href="{!! url('/logout'); !!}">
                   <button type="button" class="btn btn-sm">
-                    <span class="glyphicon glyphicon-log-out">Log out</span> 
+                    <span class="glyphicon glyphicon-log-out">                           Log out</span> 
                   </button>
                   </a>
 
@@ -75,11 +75,11 @@
                   </ul>
 
                   <span class="navbar-text">
-                    {{$username}}
+                    {{$username}} 
                   </span>
                   <a href="{!! url('/logout'); !!}">
                   <button type="button" class="btn btn-sm">
-                    <span class="glyphicon glyphicon-log-out">Log out</span> 
+                    <span class="glyphicon glyphicon-log-out"> Log out</span> 
                   </button>
                   </a>
                   
@@ -95,16 +95,16 @@
                 </ul>
 
                 <span class="navbar-text">
-               {{$username}}
+               {{$username}} 
                 </span>
                 <a href="{!! url('/login'); !!}">
                 <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Sign In</span> 
+                  <span class="glyphicon glyphicon-log-out"> Sign In</span> 
                 </button>
                 </a>
                 <a href="{!! url('/register'); !!}">
                 <button type="button" class="btn btn-sm">
-                  <span class="glyphicon glyphicon-log-out">Sign Up</span> 
+                  <span class="glyphicon glyphicon-log-out"> Sign Up</span> 
                 </button>
                 </a>
             @endif
